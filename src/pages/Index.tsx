@@ -62,7 +62,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-8">Our story</p>
           <h2 className="font-display text-4xl md:text-6xl text-cocoa text-balance leading-tight">
-            Born from a love <span className="italic text-terracotta"></span>.
+            Born from love.
           </h2>
           <div className="w-px h-16 bg-cocoa/30 mx-auto my-10" />
           <p className="font-body text-cocoa/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
@@ -120,7 +120,7 @@ const Index = () => {
       <section className="py-28 md:py-40 px-6 bg-gradient-warm">
         <div className="max-w-3xl mx-auto text-center">
           <p className="font-display italic text-3xl md:text-5xl text-cocoa leading-snug text-balance">
-            "Sweet to slow down and taste the moment."
+            "A sweet to slow down and taste the moment."
           </p>
           <p className="text-xs uppercase tracking-[0.4em] text-cocoa/60 mt-10">— The Piacere kitchen</p>
         </div>
