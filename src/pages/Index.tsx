@@ -62,13 +62,11 @@ const Index = () => {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-8">Our story</p>
           <h2 className="font-display text-4xl md:text-6xl text-cocoa text-balance leading-tight">
-            Born from a love letter to <span className="italic text-terracotta">la dolce vita</span>.
+            Born from a love <span className="italic text-terracotta"></span>.
           </h2>
           <div className="w-px h-16 bg-cocoa/30 mx-auto my-10" />
           <p className="font-body text-cocoa/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-            Piacere — Italian for <em>pleasure</em> — is an intimate pastry studio where every bite is
-            crafted by hand. We believe the smallest sweets carry the greatest joy, and each
-            morsel is shaped with patience, butter, and a touch of romance.
+            Where the smallest sweets carry the greatest joy
           </p>
         </div>
       </section>
@@ -82,13 +80,13 @@ const Index = () => {
               <h2 className="font-display text-5xl md:text-7xl text-cocoa">Today's selection</h2>
             </div>
             <p className="font-display italic text-cocoa/60 text-xl max-w-sm">
-              Rotating weekly — always fresh, always small batch.
+              Rotating  - always fresh, always small batch.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
             {[
-              { img: p1, name: "Berry Tartelette", desc: "Vanilla cream, fresh berries, almond crust", price: "€4" },
+              { img: p1, name: "Truffle Roll", desc: "Vanilla cream, fresh berries, almond crust", price: "\n" },
               { img: p2, name: "Macaron Trio", desc: "Rose, pistachio & vanilla — set of three", price: "€7" },
               { img: p3, name: "Tiramisù Bites", desc: "Espresso-soaked sponge, mascarpone, cocoa", price: "€5" },
               { img: p4, name: "Choux Cream Puffs", desc: "Crisp pâte à choux, Madagascan vanilla cream", price: "€3" },
