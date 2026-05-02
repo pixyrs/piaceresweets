@@ -87,9 +87,9 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
             {[
               { img: p1, name: "Donuts", desc: "Glazed mini donuts, soft and pillowy, dusted to perfection", price: "\n" },
-              { img: p2, name: "Truffle Roll", desc: "Rose, pistachio & vanilla — set of three", price: "\n" },
-              { img: p3, name: "Tiramisù Bites", desc: "Espresso-soaked sponge, mascarpone, cocoa", price: "€5" },
-              { img: p4, name: "Choux Cream Puffs", desc: "Crisp pâte à choux, Madagascan vanilla cream", price: "€3" },
+              { img: p2, name: "Truffle Roll", desc: "Chocolate, walnuts, soft dough\n", price: "\n" },
+              { img: p3, name: "Crescent bites", desc: "Espresso-soaked sponge, mascarpone, cocoa", price: "\n" },
+              { img: p4, name: "Choux Cream Puffs", desc: "Crisp pâte à choux, Madagascan vanilla cream", price: "\n" },
             ].map((item, i) => (
               <article key={item.name} className="group">
                 <div className="overflow-hidden bg-muted aspect-[4/5] mb-6">
@@ -120,7 +120,7 @@ const Index = () => {
       <section className="py-28 md:py-40 px-6 bg-gradient-warm">
         <div className="max-w-3xl mx-auto text-center">
           <p className="font-display italic text-3xl md:text-5xl text-cocoa leading-snug text-balance">
-            "Each sweet is a tiny invitation to slow down and taste the moment."
+            "Sweet to slow down and taste the moment."
           </p>
           <p className="text-xs uppercase tracking-[0.4em] text-cocoa/60 mt-10">— The Piacere kitchen</p>
         </div>
@@ -135,8 +135,7 @@ const Index = () => {
               Bring a little <span className="italic text-rose">piacere</span> to your table.
             </h2>
             <p className="font-body text-cream/70 mt-8 text-lg leading-relaxed">
-              We craft custom boxes for events, gifts, and weekend cravings.
-              Order via Instagram DM or email — orders open Monday to Friday.
+              &nbsp;Order via Instagram DM or email — orders open Monday to Friday.
             </p>
           </div>
           <div className="space-y-6">
@@ -149,17 +148,17 @@ const Index = () => {
               <Instagram className="w-6 h-6 text-rose" />
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-cream/50">Instagram</p>
-                <p className="font-display text-2xl group-hover:text-rose transition-colors">@piacere</p>
+                <p className="font-display text-2xl group-hover:text-rose transition-colors">@piaceresweets</p>
               </div>
             </a>
             <a
-              href="mailto:hello@piacere.com"
+              href="mailto:piaceresweets@hotmail.com"
               className="flex items-center gap-5 p-6 border border-cream/20 hover:border-rose hover:bg-cream/5 transition-all group"
             >
               <Mail className="w-6 h-6 text-rose" />
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-cream/50">Email</p>
-                <p className="font-display text-2xl group-hover:text-rose transition-colors">hello@piacere.com</p>
+                <p className="font-display text-2xl group-hover:text-rose transition-colors">piaceresweets@hotmail.com</p>
               </div>
             </a>
             <div className="flex items-center gap-5 p-6 border border-cream/20">
