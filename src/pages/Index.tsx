@@ -89,7 +89,7 @@ const Index = () => {
               { img: p1, name: "Donuts", desc: "Glazed mini donuts, soft and pillowy, dusted to perfection", price: "\n" },
               { img: p2, name: "Truffle Roll", desc: "Chocolate, walnuts, soft dough\n", price: "\n" },
               { img: p3, name: "Crescent bites", desc: "Espresso-soaked sponge, mascarpone, cocoa", price: "\n" },
-              { img: p4, name: "Choux Cream Puffs", desc: "Crisp pâte à choux, Madagascan vanilla cream", price: "\n" },
+              { img: p4, name: "Peaches", desc: "Juicy peaches, light cream, soft sponge", price: "\n" },
             ].map((item, i) => (
               <article key={item.name} className="group">
                 <div className="overflow-hidden bg-muted aspect-[4/5] mb-6">
