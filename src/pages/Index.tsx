@@ -87,7 +87,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
             {[
               { img: p1, name: "Donuts", desc: "Glazed mini donuts, soft and pillowy, dusted to perfection", price: "\n" },
-              { img: p2, name: "Macaron Trio", desc: "Rose, pistachio & vanilla — set of three", price: "€7" },
+              { img: p2, name: "Truffle Roll", desc: "Rose, pistachio & vanilla — set of three", price: "\n" },
               { img: p3, name: "Tiramisù Bites", desc: "Espresso-soaked sponge, mascarpone, cocoa", price: "€5" },
               { img: p4, name: "Choux Cream Puffs", desc: "Crisp pâte à choux, Madagascan vanilla cream", price: "€3" },
             ].map((item, i) => (
