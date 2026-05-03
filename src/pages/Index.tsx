@@ -101,7 +101,7 @@ const Index = () => {
             {t("story.title")}
           </h2>
           <div className="w-px h-16 bg-cocoa/30 mx-auto my-10" />
-          <p className="font-body text-cocoa/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+          <p className="font-body text-cocoa/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto whitespace-pre-line">
             {t("story.body")}
           </p>
         </div>
