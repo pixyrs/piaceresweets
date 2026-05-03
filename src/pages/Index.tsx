@@ -108,11 +108,20 @@ const Index = () => {
       </section>
 
       {/* MENU */}
-      <section id="menu" className="relative py-28 md:py-40 px-6 md:px-12 bg-menu overflow-hidden">
-        {/* decorative blurred orbs */}
-        <div className="pointer-events-none absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-rose/40 blur-3xl opacity-60" />
-        <div className="pointer-events-none absolute top-1/3 -right-40 w-[32rem] h-[32rem] rounded-full bg-terracotta/20 blur-3xl opacity-70" />
-        <div className="pointer-events-none absolute bottom-0 left-1/4 w-[24rem] h-[24rem] rounded-full bg-gold/15 blur-3xl" />
+      <section ref={menuRef} id="menu" className="relative py-28 md:py-40 px-6 md:px-12 bg-menu overflow-hidden">
+        {/* decorative blurred orbs (parallax) */}
+        <div
+          className="pointer-events-none absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-rose/40 blur-3xl opacity-60 will-change-transform"
+          style={{ transform: `translate3d(${p * -30}px, ${p * -80}px, 0)` }}
+        />
+        <div
+          className="pointer-events-none absolute top-1/3 -right-40 w-[32rem] h-[32rem] rounded-full bg-terracotta/20 blur-3xl opacity-70 will-change-transform"
+          style={{ transform: `translate3d(${p * 40}px, ${p * 60}px, 0)` }}
+        />
+        <div
+          className="pointer-events-none absolute bottom-0 left-1/4 w-[24rem] h-[24rem] rounded-full bg-gold/15 blur-3xl will-change-transform"
+          style={{ transform: `translate3d(${p * -20}px, ${p * 100}px, 0)` }}
+        />
         {/* subtle grain */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply bg-grain" />
 
