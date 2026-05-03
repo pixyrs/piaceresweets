@@ -97,19 +97,27 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
             {items.map((item, i) => (
-              <article key={i} className="group">
-                <div className="overflow-hidden bg-muted aspect-[4/5] mb-6">
+              <article
+                key={i}
+                className="group menu-card"
+                style={{ animationDelay: `${i * 140}ms` }}
+              >
+                <div className="relative overflow-hidden bg-muted aspect-[4/5] mb-6 shadow-elegant">
                   <img
                     src={item.img}
                     alt={item.name}
                     width={800}
                     height={1000}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cocoa/70 via-cocoa/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <span className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-cream opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-700">
+                    N°0{i + 1}
+                  </span>
                 </div>
-                <div className="flex items-baseline justify-between gap-4 border-b border-cocoa/15 pb-4">
-                  <h3 className="font-display text-3xl md:text-4xl text-cocoa">
+                <div className="flex items-baseline justify-between gap-4 border-b border-cocoa/15 pb-4 transition-colors duration-500 group-hover:border-rose">
+                  <h3 className="font-display text-3xl md:text-4xl text-cocoa transition-colors duration-500 group-hover:text-rose">
                     {item.name}
                   </h3>
                 </div>
