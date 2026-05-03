@@ -83,12 +83,20 @@ const Index = () => {
       </section>
 
       {/* MENU */}
-      <section id="menu" className="py-28 md:py-40 px-6 md:px-12 bg-background">
-        <div className="max-w-7xl mx-auto">
+      <section id="menu" className="relative py-28 md:py-40 px-6 md:px-12 bg-menu overflow-hidden">
+        {/* decorative blurred orbs */}
+        <div className="pointer-events-none absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-rose/40 blur-3xl opacity-60" />
+        <div className="pointer-events-none absolute top-1/3 -right-40 w-[32rem] h-[32rem] rounded-full bg-terracotta/20 blur-3xl opacity-70" />
+        <div className="pointer-events-none absolute bottom-0 left-1/4 w-[24rem] h-[24rem] rounded-full bg-gold/15 blur-3xl" />
+        {/* subtle grain */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply bg-grain" />
+
+        <div className="relative max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-16 md:mb-24 flex-wrap gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("menu.kicker")}</p>
               <h2 className="font-display text-5xl md:text-7xl text-cocoa">{t("menu.title")}</h2>
+              <div className="mt-6 h-px w-24 bg-gradient-to-r from-terracotta to-transparent" />
             </div>
             <p className="font-display italic text-cocoa/60 text-xl max-w-sm">
               {t("menu.note")}
