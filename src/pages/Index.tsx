@@ -1,4 +1,5 @@
 import { Instagram, Mail, MapPin } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
 import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
@@ -14,6 +15,30 @@ const Index = () => {
     { img: p3, name: t("menu.3.name"), desc: t("menu.3.desc") },
     { img: p4, name: t("menu.4.name"), desc: t("menu.4.desc") },
   ];
+
+  // Parallax progress (-1 → 1) for the menu section orbs
+  const menuRef = useRef<HTMLElement | null>(null);
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = menuRef.current;
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const vh = window.innerHeight || 1;
+        const prog = 1 - (r.top + r.height / 2) / (vh / 2 + r.height / 2);
+        setP(Math.max(-1.2, Math.min(1.2, prog)));
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
