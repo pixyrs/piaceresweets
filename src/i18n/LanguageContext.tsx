@@ -17,7 +17,7 @@ const translations: Record<Lang, Dict> = {
     "hero.cta": "Place an order",
     "story.kicker": "Our story",
     "story.title": "Born from love.",
-    "story.body": "Where the smallest sweets carry the greatest joy",
+    "story.body": "Where the smallest sweets bring the greatest joy.\n\nWe create small, handmade treats that combine tradition and indulgence, because we believe happiness lies in simple, high-quality sweet moments. Each of our products is prepared with care, carefully selected ingredients, and special attention to every detail, so that every bite becomes a small moment of true joy.",
     "menu.kicker": "The menu",
     "menu.title": "Today's selection",
     "menu.note": "Rotating  - always fresh, always small batch.",
