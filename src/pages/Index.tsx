@@ -223,7 +223,7 @@ const Index = () => {
             <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("occasions.kicker")}</p>
             <h2 className="font-display text-4xl md:text-6xl text-cocoa text-balance">{t("occasions.title")}</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {occasions.map((o, i) => (
               <div
                 key={i}
