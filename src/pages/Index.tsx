@@ -3,7 +3,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
 import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
-
+import p3 from "@/assets/pastry-3.jpg";
 import p4 from "@/assets/pastry-4.jpg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
 
@@ -12,6 +12,7 @@ const Index = () => {
   const items = [
     { img: p1, name: t("menu.1.name"), desc: t("menu.1.desc") },
     { img: p2, name: t("menu.2.name"), desc: t("menu.2.desc") },
+    { img: p3, name: t("menu.3.name"), desc: t("menu.3.desc") },
     { img: p4, name: t("menu.4.name"), desc: t("menu.4.desc") },
   ];
 
