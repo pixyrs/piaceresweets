@@ -109,34 +109,43 @@ const Index = () => {
 
       {/* MENU */}
       <section ref={menuRef} id="menu" className="relative py-28 md:py-40 px-6 md:px-12 bg-menu overflow-hidden">
-        {/* very subtle warm glow with gentle parallax */}
-        <div
-          className="pointer-events-none absolute -top-40 left-1/2 w-[50rem] h-[34rem] rounded-full bg-rose/15 blur-[110px] will-change-transform"
-          style={{ transform: `translate3d(calc(-50% + ${p * 16}px), ${p * -30}px, 0)` }}
-        />
-        {/* faint grain */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-multiply bg-grain" />
+        {/* warm washes top & bottom for seamless blend */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cream/90 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-cream-deep to-transparent" />
 
+        {/* singular warm glow, gentle parallax */}
+        <div
+          className="pointer-events-none absolute -top-48 left-1/2 w-[60rem] h-[40rem] rounded-full bg-rose/25 blur-[120px] will-change-transform"
+          style={{ transform: `translate3d(calc(-50% + ${p * 20}px), ${p * -40}px, 0)` }}
+        />
+
+        {/* paper texture + grain */}
+        <div className="pointer-events-none absolute inset-0 bg-paper opacity-60" />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-multiply bg-grain" />
+
+        {/* hairline editorial frame */}
+        <div className="pointer-events-none absolute inset-6 md:inset-10 border border-cocoa/10" />
 
         <div className="relative max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-12 md:mb-16 flex-wrap gap-6 border-b border-terracotta/20 pb-10">
+          <div className="flex items-end justify-between mb-16 md:mb-24 flex-wrap gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("menu.kicker")}</p>
               <h2 className="font-display text-5xl md:text-7xl text-cocoa">{t("menu.title")}</h2>
+              <div className="mt-6 h-px w-24 bg-gradient-to-r from-terracotta to-transparent" />
             </div>
-            <p className="font-display italic text-cocoa/70 text-xl max-w-sm md:text-right">
+            <p className="font-display italic text-cocoa/60 text-xl max-w-sm">
               {t("menu.note")}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
             {items.map((item, i) => (
               <article
                 key={i}
                 className="group menu-card"
                 style={{ animationDelay: `${i * 140}ms` }}
               >
-                <div className="relative overflow-hidden bg-cream-deep aspect-[4/5] mb-6 menu-card-frame">
+                <div className="relative overflow-hidden bg-muted aspect-[4/5] mb-6 shadow-elegant">
                   <img
                     src={item.img}
                     alt={item.name}
