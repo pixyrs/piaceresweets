@@ -1,6 +1,7 @@
 import { ChevronDown, Instagram, Mail, MapPin } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
+import logo from "@/assets/piacere-logo.png";
 import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
 import p3 from "@/assets/pastry-3.jpg";
