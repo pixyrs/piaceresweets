@@ -109,22 +109,14 @@ const Index = () => {
 
       {/* MENU */}
       <section ref={menuRef} id="menu" className="relative py-28 md:py-40 px-6 md:px-12 bg-menu overflow-hidden">
-        {/* warm washes top & bottom for seamless blend */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cream/90 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-cream-deep to-transparent" />
-
-        {/* singular warm glow, gentle parallax */}
+        {/* very subtle warm glow with gentle parallax */}
         <div
-          className="pointer-events-none absolute -top-48 left-1/2 w-[60rem] h-[40rem] rounded-full bg-rose/25 blur-[120px] will-change-transform"
-          style={{ transform: `translate3d(calc(-50% + ${p * 20}px), ${p * -40}px, 0)` }}
+          className="pointer-events-none absolute -top-40 left-1/2 w-[50rem] h-[34rem] rounded-full bg-rose/15 blur-[110px] will-change-transform"
+          style={{ transform: `translate3d(calc(-50% + ${p * 16}px), ${p * -30}px, 0)` }}
         />
+        {/* faint grain */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-multiply bg-grain" />
 
-        {/* paper texture + grain */}
-        <div className="pointer-events-none absolute inset-0 bg-paper opacity-60" />
-        <div className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-multiply bg-grain" />
-
-        {/* hairline editorial frame */}
-        <div className="pointer-events-none absolute inset-6 md:inset-10 border border-cocoa/10" />
 
         <div className="relative max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-16 md:mb-24 flex-wrap gap-6">
