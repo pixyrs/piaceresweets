@@ -123,16 +123,14 @@
 
 @layer utilities {
   .bg-menu {
-    background-color: hsl(32 28% 90%);
+    background-color: hsl(var(--cream));
     background-image:
-      radial-gradient(ellipse at 50% -10%, hsl(var(--cream) / 0.9), transparent 60%),
-      radial-gradient(ellipse at 0% 100%, hsl(var(--terracotta) / 0.10), transparent 55%),
-      radial-gradient(ellipse at 100% 30%, hsl(var(--gold) / 0.10), transparent 55%);
+      radial-gradient(circle at 2px 2px, hsl(var(--cocoa) / 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
   }
-  .bg-paper {
-    background-image:
-      repeating-linear-gradient(0deg, hsl(20 30% 20% / 0.025) 0 1px, transparent 1px 3px),
-      repeating-linear-gradient(90deg, hsl(20 30% 20% / 0.02) 0 1px, transparent 1px 4px);
+  .menu-card-frame {
+    outline: 1px solid hsl(var(--terracotta) / 0.18);
+    outline-offset: -1px;
   }
   .menu-divider {
     background-image: radial-gradient(circle, hsl(var(--cocoa) / 0.5) 1px, transparent 1.5px);
