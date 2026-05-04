@@ -109,9 +109,9 @@ const Index = () => {
 
       {/* MENU */}
       <section ref={menuRef} id="menu" className="relative py-28 md:py-40 px-6 md:px-12 bg-menu overflow-hidden">
-        {/* very subtle warm glow with gentle parallax */}
+        {/* very subtle warm glow with gentle parallax + slow breath */}
         <div
-          className="pointer-events-none absolute -top-40 left-1/2 w-[50rem] h-[34rem] rounded-full bg-rose/15 blur-[110px] will-change-transform"
+          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[50rem] h-[34rem] rounded-full bg-rose/15 blur-[110px] will-change-transform breath"
           style={{ transform: `translate3d(calc(-50% + ${p * 16}px), ${p * -30}px, 0)` }}
         />
         {/* faint grain */}
