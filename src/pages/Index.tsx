@@ -1,5 +1,5 @@
-import { Instagram, Mail, MapPin } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Instagram, Mail, MapPin } from "lucide-react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
 import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
@@ -39,8 +39,52 @@ const Index = () => {
       cancelAnimationFrame(raf);
     };
   }, []);
+
+  // Scroll-reveal observer
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const occasions = [1, 2, 3, 4].map((i) => ({
+    title: t(`occasions.${i}.title`),
+    desc: t(`occasions.${i}.desc`),
+  }));
+  const testimonials = [1, 2, 3].map((i) => ({
+    text: t(`testimonials.${i}.text`),
+    by: t(`testimonials.${i}.by`),
+  }));
+  const faqs = [1, 2, 3, 4].map((i) => ({
+    q: t(`faq.${i}.q`),
+    a: t(`faq.${i}.a`),
+  }));
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const [form, setForm] = useState({ name: "", email: "", occasion: "", date: "", message: "" });
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Order request — ${form.occasion || "Piacere"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nOccasion: ${form.occasion}\nDate: ${form.date}\n\n${form.message}`,
+    );
+    window.location.href = `mailto:piaceresweets@hotmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex items-center justify-between">
         <div className="font-display text-2xl tracking-wide text-cream">piacere</div>
@@ -172,7 +216,53 @@ const Index = () => {
         </div>
       </section>
 
-      {/* QUOTE */}
+      {/* OCCASIONS */}
+      <section className="py-28 md:py-36 px-6 md:px-12 bg-cream-deep">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("occasions.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-6xl text-cocoa text-balance">{t("occasions.title")}</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {occasions.map((o, i) => (
+              <div
+                key={i}
+                className="reveal group p-8 bg-cream border border-cocoa/10 hover:border-rose hover:shadow-elegant transition-all duration-500"
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                <div className="font-display italic text-terracotta text-sm mb-3">N°0{i + 1}</div>
+                <h3 className="font-display text-3xl text-cocoa mb-3 group-hover:text-rose transition-colors">{o.title}</h3>
+                <p className="font-body text-cocoa/70 text-sm leading-relaxed">{o.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-28 md:py-36 px-6 md:px-12 bg-gradient-cream">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("testimonials.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-6xl text-cocoa text-balance">{t("testimonials.title")}</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((tm, i) => (
+              <figure
+                key={i}
+                className="reveal relative p-10 bg-cream border border-cocoa/10 shadow-soft"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <span className="absolute -top-6 left-8 font-display text-7xl text-terracotta/40 leading-none">"</span>
+                <blockquote className="font-display italic text-cocoa text-xl leading-relaxed">{tm.text}</blockquote>
+                <figcaption className="text-[11px] uppercase tracking-[0.3em] text-cocoa/60 mt-6">{tm.by}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-28 md:py-40 px-6 bg-gradient-warm">
         <div className="max-w-3xl mx-auto text-center">
           <p className="font-display italic text-3xl md:text-5xl text-cocoa leading-snug text-balance">
@@ -228,13 +318,122 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ORDER FORM */}
+      <section id="request" className="py-28 md:py-36 px-6 md:px-12 bg-gradient-warm">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("form.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-5xl text-cocoa text-balance">{t("form.title")}</h2>
+          </div>
+          <form onSubmit={onSubmit} className="reveal grid grid-cols-1 md:grid-cols-2 gap-5 bg-cream p-8 md:p-10 border border-cocoa/10 shadow-soft">
+            <input
+              required
+              maxLength={100}
+              placeholder={t("form.name")}
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
+              required
+              type="email"
+              maxLength={255}
+              placeholder={t("form.email")}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
+              maxLength={100}
+              placeholder={t("form.occasion")}
+              value={form.occasion}
+              onChange={(e) => setForm({ ...form, occasion: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
+              type="date"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors"
+            />
+            <textarea
+              required
+              maxLength={1000}
+              rows={4}
+              placeholder={t("form.message")}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="md:col-span-2 bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors resize-none"
+            />
+            <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4">
+              <p className="text-[11px] text-cocoa/50 font-body">{t("form.note")}</p>
+              <button
+                type="submit"
+                className="px-10 py-4 bg-cocoa text-cream text-xs uppercase tracking-[0.3em] hover:bg-terracotta transition-colors duration-500"
+              >
+                {t("form.submit")}
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 bg-cream">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("faq.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-5xl text-cocoa text-balance">{t("faq.title")}</h2>
+          </div>
+          <div className="divide-y divide-cocoa/15 border-y border-cocoa/15">
+            {faqs.map((f, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={i} className="reveal" style={{ transitionDelay: `${i * 60}ms` }}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between gap-6 py-6 text-left group"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-display text-xl md:text-2xl text-cocoa group-hover:text-terracotta transition-colors">
+                      {f.q}
+                    </span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-cocoa/60 shrink-0 transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-500 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0"}`}
+                  >
+                    <p className="overflow-hidden font-body text-cocoa/75 leading-relaxed">{f.a}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
+
       <footer className="py-12 px-6 bg-cocoa border-t border-cream/10 text-center">
         <p className="font-display text-3xl text-cream tracking-wide">piacere</p>
         <p className="text-[10px] uppercase tracking-[0.4em] text-cream/50 mt-3">
           {t("footer.tag")}
         </p>
       </footer>
+
+      {/* STICKY MOBILE CTA */}
+      <a
+        href="https://www.instagram.com/piaceresweets?igsh=MXhxZ3Awd3UzZXl0aQ%3D%3D&utm_source=qr"
+        target="_blank"
+        rel="noreferrer"
+        className="md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-6 py-3.5 bg-cocoa text-cream rounded-full shadow-elegant text-[11px] uppercase tracking-[0.25em]"
+      >
+        <Instagram className="w-4 h-4 text-rose" />
+        {t("sticky.order")}
+      </a>
     </div>
   );
 };
