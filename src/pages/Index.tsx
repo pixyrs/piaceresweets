@@ -1,5 +1,5 @@
-import { Instagram, Mail, MapPin } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Instagram, Mail, MapPin } from "lucide-react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
 import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
@@ -39,7 +39,49 @@ const Index = () => {
       cancelAnimationFrame(raf);
     };
   }, []);
-  return (
+
+  // Scroll-reveal observer
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const occasions = [1, 2, 3, 4].map((i) => ({
+    title: t(`occasions.${i}.title`),
+    desc: t(`occasions.${i}.desc`),
+  }));
+  const testimonials = [1, 2, 3].map((i) => ({
+    text: t(`testimonials.${i}.text`),
+    by: t(`testimonials.${i}.by`),
+  }));
+  const faqs = [1, 2, 3, 4].map((i) => ({
+    q: t(`faq.${i}.q`),
+    a: t(`faq.${i}.a`),
+  }));
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const [form, setForm] = useState({ name: "", email: "", occasion: "", date: "", message: "" });
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Order request — ${form.occasion || "Piacere"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nOccasion: ${form.occasion}\nDate: ${form.date}\n\n${form.message}`,
+    );
+    window.location.href = `mailto:piaceresweets@hotmail.com?subject=${subject}&body=${body}`;
+  };
+
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex items-center justify-between">
