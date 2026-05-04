@@ -403,7 +403,7 @@ const Index = () => {
 
       {/* STICKY MOBILE CTA */}
       <a
-        href="https://www.instagram.com/piaceresweets?igsh=MXhxZ3Awd3UzZXl0aQ%3D%3D&utm_source=qr"
+        href="https://ig.me/m/piaceresweets"
         target="_blank"
         rel="noreferrer"
         className="md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-6 py-3.5 bg-cocoa text-cream rounded-full shadow-elegant text-[11px] uppercase tracking-[0.25em]"
