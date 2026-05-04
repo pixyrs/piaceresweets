@@ -318,7 +318,105 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ORDER FORM */}
+      <section id="request" className="py-28 md:py-36 px-6 md:px-12 bg-gradient-warm">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("form.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-5xl text-cocoa text-balance">{t("form.title")}</h2>
+          </div>
+          <form onSubmit={onSubmit} className="reveal grid grid-cols-1 md:grid-cols-2 gap-5 bg-cream p-8 md:p-10 border border-cocoa/10 shadow-soft">
+            <input
+              required
+              maxLength={100}
+              placeholder={t("form.name")}
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
+              required
+              type="email"
+              maxLength={255}
+              placeholder={t("form.email")}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
+              maxLength={100}
+              placeholder={t("form.occasion")}
+              value={form.occasion}
+              onChange={(e) => setForm({ ...form, occasion: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
+              type="date"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors"
+            />
+            <textarea
+              required
+              maxLength={1000}
+              rows={4}
+              placeholder={t("form.message")}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="md:col-span-2 bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors resize-none"
+            />
+            <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4">
+              <p className="text-[11px] text-cocoa/50 font-body">{t("form.note")}</p>
+              <button
+                type="submit"
+                className="px-10 py-4 bg-cocoa text-cream text-xs uppercase tracking-[0.3em] hover:bg-terracotta transition-colors duration-500"
+              >
+                {t("form.submit")}
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 bg-cream">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("faq.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-5xl text-cocoa text-balance">{t("faq.title")}</h2>
+          </div>
+          <div className="divide-y divide-cocoa/15 border-y border-cocoa/15">
+            {faqs.map((f, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={i} className="reveal" style={{ transitionDelay: `${i * 60}ms` }}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between gap-6 py-6 text-left group"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-display text-xl md:text-2xl text-cocoa group-hover:text-terracotta transition-colors">
+                      {f.q}
+                    </span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-cocoa/60 shrink-0 transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-500 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0"}`}
+                  >
+                    <p className="overflow-hidden font-body text-cocoa/75 leading-relaxed">{f.a}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
+
       <footer className="py-12 px-6 bg-cocoa border-t border-cream/10 text-center">
         <p className="font-display text-3xl text-cream tracking-wide">piacere</p>
         <p className="text-[10px] uppercase tracking-[0.4em] text-cream/50 mt-3">
