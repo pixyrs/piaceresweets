@@ -112,13 +112,38 @@
   .menu-card {
     animation: menuCardIn 1s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-timeline: view();
-    animation-range: entry 0% cover 30%;
+    animation-range: entry 0% cover 35%;
   }
+  .menu-img-reveal {
+    animation: menuImgReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+    transform-origin: center;
+  }
+  .menu-underline {
+    transform-origin: left;
+    animation: menuUnderline 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+  .breath { animation: breath 9s ease-in-out infinite; }
 }
 
 @keyframes menuCardIn {
   from { opacity: 0; transform: translateY(40px) scale(0.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes menuImgReveal {
+  from { transform: scale(1.18); filter: brightness(0.92) saturate(0.85); }
+  to { transform: scale(1); filter: brightness(1) saturate(1); }
+}
+@keyframes menuUnderline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes breath {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
 }
 
 @layer utilities {
