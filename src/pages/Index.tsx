@@ -96,7 +96,7 @@ const Index = () => {
         <div className="flex items-center gap-5">
           <LanguageSwitcher className="text-cream/90" />
           <a
-            href="https://www.instagram.com/piaceresweets?igsh=MXhxZ3Awd3UzZXl0aQ%3D%3D&utm_source=qr"
+            href="https://www.instagram.com/piaceresweets"
             target="_blank"
             rel="noreferrer"
             className="text-cream hover:text-rose transition-colors"
@@ -263,7 +263,7 @@ const Index = () => {
           </div>
           <div className="space-y-6">
             <a
-              href="https://ig.me/m/piaceresweets"
+              href="https://www.instagram.com/piaceresweets"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-5 p-6 border border-cream/20 hover:border-rose hover:bg-cream/5 transition-all group"
@@ -403,7 +403,7 @@ const Index = () => {
 
       {/* STICKY MOBILE CTA */}
       <a
-        href="https://ig.me/m/piaceresweets"
+        href="https://www.instagram.com/piaceresweets"
         target="_blank"
         rel="noreferrer"
         className="md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-6 py-3.5 bg-cocoa text-cream rounded-full shadow-elegant text-[11px] uppercase tracking-[0.25em]"
