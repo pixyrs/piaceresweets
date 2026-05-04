@@ -66,7 +66,7 @@ const Index = () => {
     text: t(`testimonials.${i}.text`),
     by: t(`testimonials.${i}.by`),
   }));
-  const faqs = [1, 2, 3].map((i) => ({
+  const faqs = [1, 2].map((i) => ({
     q: t(`faq.${i}.q`),
     a: t(`faq.${i}.a`),
   }));
