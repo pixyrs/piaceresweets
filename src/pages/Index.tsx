@@ -1,6 +1,7 @@
 import { ChevronDown, Instagram, Mail, MapPin } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
+import logo from "@/assets/piacere-logo.png";
 import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
 import p3 from "@/assets/pastry-3.jpg";
@@ -87,7 +88,7 @@ const Index = () => {
 
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex items-center justify-between">
-        <div className="font-display text-2xl tracking-wide text-cream">piacere</div>
+        <img src={logo} alt="Piacere" className="h-12 md:h-14 w-auto drop-shadow-md" />
         <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.25em] text-cream/90">
           <a href="#menu" className="hover:text-cream transition-colors">{t("nav.menu")}</a>
           <a href="#story" className="hover:text-cream transition-colors">{t("nav.story")}</a>
@@ -395,7 +396,7 @@ const Index = () => {
       {/* FOOTER */}
 
       <footer className="py-12 px-6 bg-cocoa border-t border-cream/10 text-center">
-        <p className="font-display text-3xl text-cream tracking-wide">piacere</p>
+        <img src={logo} alt="Piacere" className="h-16 md:h-20 w-auto mx-auto" />
         <p className="text-[10px] uppercase tracking-[0.4em] text-cream/50 mt-3">
           {t("footer.tag")}
         </p>
