@@ -136,7 +136,7 @@ const Index = () => {
                 className="group menu-card"
                 style={{ animationDelay: `${i * 140}ms` }}
               >
-                <div className="relative overflow-hidden bg-muted aspect-[4/5] mb-6 shadow-elegant">
+                <div className="relative overflow-hidden bg-cream-deep aspect-[4/5] mb-6 menu-card-frame">
                   <img
                     src={item.img}
                     alt={item.name}
