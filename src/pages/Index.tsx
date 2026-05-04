@@ -119,18 +119,17 @@ const Index = () => {
 
 
         <div className="relative max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-16 md:mb-24 flex-wrap gap-6">
+          <div className="flex items-end justify-between mb-12 md:mb-16 flex-wrap gap-6 border-b border-terracotta/20 pb-10">
             <div>
               <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("menu.kicker")}</p>
               <h2 className="font-display text-5xl md:text-7xl text-cocoa">{t("menu.title")}</h2>
-              <div className="mt-6 h-px w-24 bg-gradient-to-r from-terracotta to-transparent" />
             </div>
-            <p className="font-display italic text-cocoa/60 text-xl max-w-sm">
+            <p className="font-display italic text-cocoa/70 text-xl max-w-sm md:text-right">
               {t("menu.note")}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20 mt-16">
             {items.map((item, i) => (
               <article
                 key={i}
