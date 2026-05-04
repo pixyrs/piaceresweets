@@ -58,7 +58,7 @@ const Index = () => {
     return () => io.disconnect();
   }, []);
 
-  const occasions = [1, 2, 3, 4].map((i) => ({
+  const occasions = [1, 2, 3].map((i) => ({
     title: t(`occasions.${i}.title`),
     desc: t(`occasions.${i}.desc`),
   }));
@@ -66,7 +66,7 @@ const Index = () => {
     text: t(`testimonials.${i}.text`),
     by: t(`testimonials.${i}.by`),
   }));
-  const faqs = [1, 2, 3, 4].map((i) => ({
+  const faqs = [1, 2, 3].map((i) => ({
     q: t(`faq.${i}.q`),
     a: t(`faq.${i}.a`),
   }));
