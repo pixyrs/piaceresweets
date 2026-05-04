@@ -82,7 +82,9 @@ const Index = () => {
     window.location.href = `mailto:piaceresweets@hotmail.com?subject=${subject}&body=${body}`;
   };
 
+  return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex items-center justify-between">
         <div className="font-display text-2xl tracking-wide text-cream">piacere</div>
