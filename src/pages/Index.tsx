@@ -230,7 +230,7 @@ const Index = () => {
                 className="reveal group p-8 bg-cream border border-cocoa/10 hover:border-rose hover:shadow-elegant transition-all duration-500"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                
+                <div className="font-display italic text-terracotta text-sm mb-3">N°0{i + 1}</div>
                 <h3 className="font-display text-3xl text-cocoa mb-3 group-hover:text-rose transition-colors">{o.title}</h3>
                 <p className="font-body text-cocoa/70 text-sm leading-relaxed">{o.desc}</p>
               </div>
