@@ -133,7 +133,7 @@ const Index = () => {
             {items.map((item, i) => (
               <article
                 key={i}
-                className="group menu-card"
+                className="group menu-card transition-transform duration-700 ease-out hover:-translate-y-2"
                 style={{ animationDelay: `${i * 140}ms` }}
               >
                 <div className="relative overflow-hidden bg-cream-deep aspect-[4/5] mb-6 menu-card-frame">
@@ -143,17 +143,19 @@ const Index = () => {
                     width={800}
                     height={1000}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-110"
+                    className="menu-img-reveal w-full h-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-cocoa/70 via-cocoa/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <span className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-cream opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-700">
                     N°0{i + 1}
                   </span>
                 </div>
-                <div className="flex items-baseline justify-between gap-4 border-b border-cocoa/15 pb-4 transition-colors duration-500 group-hover:border-rose">
-                  <h3 className="font-display text-3xl md:text-4xl text-cocoa transition-colors duration-500 group-hover:text-rose">
+                <div className="relative flex items-baseline justify-between gap-4 pb-4">
+                  <h3 className="font-display text-3xl md:text-4xl text-cocoa transition-colors duration-500 group-hover:text-terracotta">
                     {item.name}
                   </h3>
+                  <span className="absolute left-0 right-0 bottom-0 h-px bg-cocoa/15" />
+                  <span className="menu-underline absolute left-0 bottom-0 h-px w-full bg-terracotta origin-left" />
                 </div>
                 <p className="font-body text-cocoa/65 text-sm mt-3 tracking-wide">{item.desc}</p>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-cocoa/40 mt-2">N°0{i + 1}</p>
