@@ -123,10 +123,23 @@
 
 @layer utilities {
   .bg-menu {
-    background:
-      radial-gradient(ellipse at 20% 0%, hsl(var(--rose) / 0.35), transparent 55%),
-      radial-gradient(ellipse at 90% 80%, hsl(var(--terracotta) / 0.18), transparent 60%),
-      linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(var(--cream-deep)) 100%);
+    background-color: hsl(32 28% 90%);
+    background-image:
+      radial-gradient(ellipse at 50% -10%, hsl(var(--cream) / 0.9), transparent 60%),
+      radial-gradient(ellipse at 0% 100%, hsl(var(--terracotta) / 0.10), transparent 55%),
+      radial-gradient(ellipse at 100% 30%, hsl(var(--gold) / 0.10), transparent 55%);
+  }
+  .bg-paper {
+    background-image:
+      repeating-linear-gradient(0deg, hsl(20 30% 20% / 0.025) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, hsl(20 30% 20% / 0.02) 0 1px, transparent 1px 4px);
+  }
+  .menu-divider {
+    background-image: radial-gradient(circle, hsl(var(--cocoa) / 0.5) 1px, transparent 1.5px);
+    background-size: 14px 14px;
+    background-repeat: repeat-x;
+    background-position: center;
+    height: 14px;
   }
   .bg-grain {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");

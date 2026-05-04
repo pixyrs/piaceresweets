@@ -109,21 +109,22 @@ const Index = () => {
 
       {/* MENU */}
       <section ref={menuRef} id="menu" className="relative py-28 md:py-40 px-6 md:px-12 bg-menu overflow-hidden">
-        {/* decorative blurred orbs (parallax) */}
+        {/* warm washes top & bottom for seamless blend */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cream/90 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-cream-deep to-transparent" />
+
+        {/* singular warm glow, gentle parallax */}
         <div
-          className="pointer-events-none absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-rose/40 blur-3xl opacity-60 will-change-transform"
-          style={{ transform: `translate3d(${p * -30}px, ${p * -80}px, 0)` }}
+          className="pointer-events-none absolute -top-48 left-1/2 w-[60rem] h-[40rem] rounded-full bg-rose/25 blur-[120px] will-change-transform"
+          style={{ transform: `translate3d(calc(-50% + ${p * 20}px), ${p * -40}px, 0)` }}
         />
-        <div
-          className="pointer-events-none absolute top-1/3 -right-40 w-[32rem] h-[32rem] rounded-full bg-terracotta/20 blur-3xl opacity-70 will-change-transform"
-          style={{ transform: `translate3d(${p * 40}px, ${p * 60}px, 0)` }}
-        />
-        <div
-          className="pointer-events-none absolute bottom-0 left-1/4 w-[24rem] h-[24rem] rounded-full bg-gold/15 blur-3xl will-change-transform"
-          style={{ transform: `translate3d(${p * -20}px, ${p * 100}px, 0)` }}
-        />
-        {/* subtle grain */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply bg-grain" />
+
+        {/* paper texture + grain */}
+        <div className="pointer-events-none absolute inset-0 bg-paper opacity-60" />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-multiply bg-grain" />
+
+        {/* hairline editorial frame */}
+        <div className="pointer-events-none absolute inset-6 md:inset-10 border border-cocoa/10" />
 
         <div className="relative max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-16 md:mb-24 flex-wrap gap-6">
