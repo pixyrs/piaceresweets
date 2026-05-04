@@ -263,7 +263,7 @@ const Index = () => {
           </div>
           <div className="space-y-6">
             <a
-              href="https://www.instagram.com/piaceresweets?igsh=MXhxZ3Awd3UzZXl0aQ%3D%3D&utm_source=qr"
+              href="https://ig.me/m/piaceresweets"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-5 p-6 border border-cream/20 hover:border-rose hover:bg-cream/5 transition-all group"
