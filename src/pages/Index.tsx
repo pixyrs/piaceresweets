@@ -88,7 +88,7 @@ const Index = () => {
 
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex items-center justify-between">
-        <img src={logo} alt="Piacere" className="h-12 md:h-14 w-auto brightness-0 invert opacity-90" />
+        <img src={logo} alt="Piacere" className="h-12 md:h-14 w-auto drop-shadow-md" />
         <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.25em] text-cream/90">
           <a href="#menu" className="hover:text-cream transition-colors">{t("nav.menu")}</a>
           <a href="#story" className="hover:text-cream transition-colors">{t("nav.story")}</a>
