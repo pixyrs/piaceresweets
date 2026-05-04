@@ -216,7 +216,53 @@ const Index = () => {
         </div>
       </section>
 
-      {/* QUOTE */}
+      {/* OCCASIONS */}
+      <section className="py-28 md:py-36 px-6 md:px-12 bg-cream-deep">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("occasions.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-6xl text-cocoa text-balance">{t("occasions.title")}</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {occasions.map((o, i) => (
+              <div
+                key={i}
+                className="reveal group p-8 bg-cream border border-cocoa/10 hover:border-rose hover:shadow-elegant transition-all duration-500"
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                <div className="font-display italic text-terracotta text-sm mb-3">N°0{i + 1}</div>
+                <h3 className="font-display text-3xl text-cocoa mb-3 group-hover:text-rose transition-colors">{o.title}</h3>
+                <p className="font-body text-cocoa/70 text-sm leading-relaxed">{o.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-28 md:py-36 px-6 md:px-12 bg-gradient-cream">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 reveal">
+            <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("testimonials.kicker")}</p>
+            <h2 className="font-display text-4xl md:text-6xl text-cocoa text-balance">{t("testimonials.title")}</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((tm, i) => (
+              <figure
+                key={i}
+                className="reveal relative p-10 bg-cream border border-cocoa/10 shadow-soft"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <span className="absolute -top-6 left-8 font-display text-7xl text-terracotta/40 leading-none">"</span>
+                <blockquote className="font-display italic text-cocoa text-xl leading-relaxed">{tm.text}</blockquote>
+                <figcaption className="text-[11px] uppercase tracking-[0.3em] text-cocoa/60 mt-6">{tm.by}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-28 md:py-40 px-6 bg-gradient-warm">
         <div className="max-w-3xl mx-auto text-center">
           <p className="font-display italic text-3xl md:text-5xl text-cocoa leading-snug text-balance">
