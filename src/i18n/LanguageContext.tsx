@@ -163,7 +163,7 @@ const translations: Record<Lang, Dict> = {
     "hero.title1": "malo",
     "hero.title2": "zadovoljstvo,",
     "hero.title3": "ručno rađeno",
-    "hero.sub": "Sitni, prelepi kolači pečeni u malim serijama — za trenutke vredne uživanja.",
+    "hero.sub": "Sitni, prelepi kolači pečeni u malim serijama, za trenutke vredne uživanja.",
     "hero.cta": "Naruči",
     "story.kicker": "Naša priča",
     "story.title": "Rođeno iz ljubavi.",
