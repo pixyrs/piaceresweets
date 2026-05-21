@@ -137,9 +137,8 @@ const Index = () => {
         >
           {t("hero.cta")}
         </a>
-
-        </div>
       </section>
+
 
       {/* STORY */}
       <section id="story" className="py-28 md:py-40 px-6 md:px-12 bg-gradient-cream">
