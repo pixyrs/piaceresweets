@@ -11,8 +11,7 @@ const BajramPopup = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    // Preview: bypass localStorage so popup always shows
-    // if (localStorage.getItem(STORAGE_KEY) === "1") return;
+    if (localStorage.getItem(STORAGE_KEY) === "1") return;
     const timer = setTimeout(() => {
       setOpen(true);
       requestAnimationFrame(() => setShown(true));
