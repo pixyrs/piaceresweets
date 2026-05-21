@@ -182,36 +182,47 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
-            {items.map((item, i) => (
-              <article
-                key={i}
-                className="group menu-card"
-                style={{ animationDelay: `${i * 140}ms` }}
-              >
-                <div className="relative overflow-hidden bg-muted aspect-[4/5] mb-6 shadow-elegant">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    width={800}
-                    height={1000}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cocoa/70 via-cocoa/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <span className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-cream opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-700">
-                    N°0{i + 1}
-                  </span>
-                </div>
-                <div className="flex items-baseline justify-between gap-4 border-b border-cocoa/15 pb-4 transition-colors duration-500 group-hover:border-rose">
-                  <h3 className="font-display text-3xl md:text-4xl text-cocoa transition-colors duration-500 group-hover:text-rose">
-                    {item.name}
-                  </h3>
-                </div>
-                <p className="font-body text-cocoa/65 text-sm mt-3 tracking-wide">{item.desc}</p>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-cocoa/40 mt-2">N°0{i + 1}</p>
-              </article>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-32">
+            {items.map((item, i) => {
+              const arched = i % 2 === 0
+                ? "rounded-t-[140px] rounded-b-lg"
+                : "rounded-t-lg rounded-b-[140px]";
+              const stagger = ["", "md:mt-24", "md:-mt-12", "md:mt-12"][i % 4];
+              return (
+                <article
+                  key={i}
+                  className={`group menu-card ${stagger}`}
+                  style={{ animationDelay: `${i * 140}ms` }}
+                >
+                  <div className={`relative overflow-hidden bg-cream-deep aspect-[4/5] mb-7 shadow-soft ${arched}`}>
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      width={800}
+                      height={1000}
+                      loading="lazy"
+                      className="w-full h-full object-cover opacity-95 transition-transform duration-[1800ms] ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-cocoa/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  </div>
+                  <div className="px-1">
+                    <div className="flex items-baseline justify-between gap-4 border-b border-cocoa/15 pb-2 mb-3 transition-colors duration-500 group-hover:border-rose">
+                      <h3 className="font-display text-2xl md:text-3xl text-cocoa transition-colors duration-500 group-hover:text-rose">
+                        {item.name}
+                      </h3>
+                      <span className="font-body text-[11px] uppercase tracking-[0.3em] text-cocoa/40">N°0{i + 1}</span>
+                    </div>
+                    <p className="font-display italic text-cocoa/60 text-base leading-relaxed max-w-[320px]">
+                      {item.desc}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-24 md:mt-32 flex justify-center">
+            <div className="w-16 h-px bg-cocoa/20" />
           </div>
         </div>
       </section>
