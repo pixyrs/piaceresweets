@@ -174,62 +174,77 @@ const Index = () => {
         {/* hairline editorial frame */}
         <div className="pointer-events-none absolute inset-6 md:inset-10 border border-cocoa/10" />
 
-        <div className="relative max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-16 md:mb-24 flex-wrap gap-6">
-            <div>
-              <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("menu.kicker")}</p>
-              <h2 className="font-display text-5xl md:text-7xl text-cocoa">{t("menu.title")}</h2>
-              <div className="mt-6 h-px w-24 bg-gradient-to-r from-terracotta to-transparent" />
+        <div className="relative max-w-6xl mx-auto">
+          {/* Header */}
+          <header className="flex flex-col md:flex-row justify-between items-baseline mb-20 border-b border-cocoa/10 pb-10 reveal">
+            <div className="space-y-2">
+              <span className="block text-terracotta text-[10px] tracking-[0.25em] font-medium uppercase">{t("menu.kicker")}</span>
+              <h2 className="font-display text-5xl md:text-7xl text-cocoa font-light leading-none">
+                {t("menu.title")}
+              </h2>
             </div>
-            <p className="font-display italic text-cocoa/60 text-xl max-w-sm">
+            <p className="mt-4 md:mt-0 font-display italic text-cocoa/60 text-lg max-w-[220px] md:text-right">
               {t("menu.note")}
             </p>
-          </div>
+          </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-32">
+          {/* Editorial asymmetric grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-24 md:gap-x-12 items-start">
             {items.map((item, i) => {
-              const arched = i % 2 === 0
-                ? "rounded-t-[140px] rounded-b-lg"
-                : "rounded-t-lg rounded-b-[140px]";
-              const stagger = ["", "md:mt-24", "md:-mt-12", "md:mt-12"][i % 4];
+              const layouts = [
+                { wrap: "md:col-span-7", aspect: "aspect-[4/3]" },
+                { wrap: "md:col-span-4 md:col-start-9 md:mt-32", aspect: "aspect-[4/5]" },
+                { wrap: "md:col-span-5 md:-mt-20", aspect: "aspect-square" },
+                { wrap: "md:col-span-6 md:col-start-7", aspect: "aspect-[16/10]" },
+              ];
+              const l = layouts[i];
+              const num = `N°0${i + 1}`;
               return (
                 <article
                   key={i}
-                  className={`group menu-card ${stagger}`}
+                  className={`group menu-card ${l.wrap}`}
                   style={{ animationDelay: `${i * 140}ms` }}
                 >
-                  <div className={`relative overflow-hidden bg-cream-deep aspect-[4/5] mb-7 shadow-soft ${arched}`}>
+                  <div className="relative bg-cream-deep p-[1px] border border-cocoa/5 overflow-hidden">
                     <img
                       src={item.img}
                       alt={item.name}
-                      width={800}
-                      height={1000}
+                      width={1200}
+                      height={900}
                       loading="lazy"
-                      className="w-full h-full object-cover opacity-95 transition-transform duration-[1800ms] ease-out group-hover:scale-105"
+                      className={`w-full ${l.aspect} object-cover grayscale-[0.15] group-hover:grayscale-0 transition-all duration-[1200ms] ease-out`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-cocoa/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   </div>
-                  <div className="px-1">
-                    <div className="flex items-baseline justify-between gap-4 border-b border-cocoa/15 pb-2 mb-3 transition-colors duration-500 group-hover:border-rose">
-                      <h3 className="font-display text-2xl md:text-3xl text-cocoa transition-colors duration-500 group-hover:text-rose">
-                        {item.name}
-                      </h3>
-                      <span className="font-body text-[11px] uppercase tracking-[0.3em] text-cocoa/40">N°0{i + 1}</span>
+                  {i === 3 ? (
+                    <div className="mt-8 flex gap-10 items-start">
+                      <span className="font-display italic text-terracotta text-5xl font-light leading-none opacity-25">04</span>
+                      <div>
+                        <h3 className="font-display text-2xl md:text-3xl text-cocoa mb-2">{item.name}</h3>
+                        <p className="font-display italic text-cocoa/70 text-base leading-relaxed max-w-sm">{item.desc}</p>
+                      </div>
                     </div>
-                    <p className="font-display italic text-cocoa/60 text-base leading-relaxed max-w-[320px]">
-                      {item.desc}
-                    </p>
-                  </div>
+                  ) : (
+                    <div className="mt-8 flex justify-between items-start gap-6">
+                      <div className="max-w-xs">
+                        <h3 className="font-display text-2xl md:text-3xl text-cocoa mb-3">{item.name}</h3>
+                        <p className="font-display italic text-cocoa/70 text-base leading-relaxed">{item.desc}</p>
+                      </div>
+                      <span className="font-display text-terracotta text-xs font-medium tracking-[0.25em] pt-1 shrink-0">{num}</span>
+                    </div>
+                  )}
                 </article>
               );
             })}
           </div>
 
-          <div className="mt-24 md:mt-32 flex justify-center">
-            <div className="w-16 h-px bg-cocoa/20" />
+          {/* Atelier signature */}
+          <div className="mt-32 flex flex-col items-center reveal">
+            <div className="h-px w-24 bg-cocoa/15 mb-6" />
+            <span className="font-body text-cocoa/40 text-[9px] tracking-[0.3em] uppercase">Atelier Menu · MMXXVI</span>
           </div>
         </div>
       </section>
+
 
       {/* OCCASIONS */}
       <section className="py-28 md:py-36 px-6 md:px-12 bg-cream-deep">
