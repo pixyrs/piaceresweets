@@ -5,6 +5,8 @@ import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
 import p3 from "@/assets/pastry-3.jpg";
 import p4 from "@/assets/pastry-4.jpg";
+import p5 from "@/assets/walnuts.jpeg";
+import p6 from "@/assets/coffee-beans.jpeg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
 import BajramPopup from "@/components/BajramPopup";
 
@@ -16,7 +18,10 @@ const Index = () => {
     { img: p2, name: t("menu.2.name"), desc: t("menu.2.desc") },
     { img: p3, name: t("menu.3.name"), desc: t("menu.3.desc") },
     { img: p4, name: t("menu.4.name"), desc: t("menu.4.desc") },
+    { img: p5, name: t("menu.5.name"), desc: t("menu.5.desc") },
+    { img: p6, name: t("menu.6.name"), desc: t("menu.6.desc") },
   ];
+
 
   // Parallax progress (-1 → 1) for the menu section orbs
   const menuRef = useRef<HTMLElement | null>(null);
@@ -196,9 +201,12 @@ const Index = () => {
                 { wrap: "md:col-span-4 md:col-start-9 md:mt-32", aspect: "aspect-[4/5]" },
                 { wrap: "md:col-span-5 md:-mt-20", aspect: "aspect-square" },
                 { wrap: "md:col-span-6 md:col-start-7", aspect: "aspect-[16/10]" },
+                { wrap: "md:col-span-5 md:-mt-12", aspect: "aspect-[4/5]" },
+                { wrap: "md:col-span-6 md:col-start-7 md:mt-16", aspect: "aspect-[4/5]" },
               ];
               const l = layouts[i];
               const num = `N°0${i + 1}`;
+              const isLast = i === items.length - 1;
               return (
                 <article
                   key={i}
@@ -215,9 +223,10 @@ const Index = () => {
                       className={`w-full ${l.aspect} object-cover grayscale-[0.15] group-hover:grayscale-0 transition-all duration-[1200ms] ease-out`}
                     />
                   </div>
-                  {i === 3 ? (
+                  {isLast ? (
                     <div className="mt-8 flex gap-10 items-start">
-                      <span className="font-display italic text-terracotta text-5xl font-light leading-none opacity-25">04</span>
+                      <span className="font-display italic text-terracotta text-5xl font-light leading-none opacity-25">0{i + 1}</span>
+
                       <div>
                         <h3 className="font-display text-2xl md:text-3xl text-cocoa mb-2">{item.name}</h3>
                         <p className="font-display italic text-cocoa/70 text-base leading-relaxed max-w-sm">{item.desc}</p>
