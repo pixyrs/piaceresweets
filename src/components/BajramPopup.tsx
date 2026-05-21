@@ -36,7 +36,7 @@ const BajramPopup = () => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="bajram-title"
-      className="fixed inset-0 z-[60] flex items-center justify-center px-5 py-8 animate-fade-in"
+      className={`fixed inset-0 z-[60] flex items-center justify-center px-5 py-8 transition-opacity duration-500 ${shown ? "opacity-100" : "opacity-0"}`}
     >
       {/* backdrop */}
       <button
