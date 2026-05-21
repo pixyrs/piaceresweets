@@ -6,6 +6,8 @@ import p2 from "@/assets/pastry-2.jpg";
 import p3 from "@/assets/pastry-3.jpg";
 import p4 from "@/assets/pastry-4.jpg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
+import BajramPopup from "@/components/BajramPopup";
+
 
 const Index = () => {
   const { t } = useLang();
@@ -84,6 +86,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BajramPopup />
+
 
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex items-center justify-between">

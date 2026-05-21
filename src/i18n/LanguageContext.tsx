@@ -72,7 +72,14 @@ const translations: Record<Lang, Dict> = {
     "form.submit": "Send request",
     "form.note": "Opens your email app to send the request to piaceresweets@hotmail.com",
     "sticky.order": "Order on Instagram",
+    "bajram.kicker": "Eid Mubarak",
+    "bajram.title": "A sweet greeting for Bajram",
+    "bajram.quote": "\"May this Bajram fill your home with peace, your heart with love, and your table with sweetness.\"",
+    "bajram.body": "From our kitchen to your celebration — order your festive box of mini sweets and make the holiday a little sweeter.",
+    "bajram.cta": "Order your Bajram box",
+    "bajram.dismiss": "Maybe later",
   },
+
   sq: {
     "nav.menu": "Menyja",
     "nav.story": "Historia",
@@ -140,7 +147,14 @@ const translations: Record<Lang, Dict> = {
     "form.submit": "Dërgo kërkesën",
     "form.note": "Hap aplikacionin e emailit për të dërguar te piaceresweets@hotmail.com",
     "sticky.order": "Porosit në Instagram",
+    "bajram.kicker": "Bajrami Mubarek",
+    "bajram.title": "Një përshëndetje e ëmbël për Bajram",
+    "bajram.quote": "\"Bajrami i bekuar ju sjelltë paqe në shtëpi, dashuri në zemër dhe ëmbëlsi në tryezë.\"",
+    "bajram.body": "Nga kuzhina jonë për festën tuaj — porosit kutinë festive me ëmbëlsira mini dhe bëje festën pak më të ëmbël.",
+    "bajram.cta": "Porosit kutinë e Bajramit",
+    "bajram.dismiss": "Ndoshta më vonë",
   },
+
   sr: {
     "nav.menu": "Meni",
     "nav.story": "Priča",
@@ -208,7 +222,14 @@ const translations: Record<Lang, Dict> = {
     "form.submit": "Pošalji zahtev",
     "form.note": "Otvara vaš mejl program da pošalje zahtev na piaceresweets@hotmail.com",
     "sticky.order": "Naruči na Instagramu",
+    "bajram.kicker": "Bajram Mubarek",
+    "bajram.title": "Slatki pozdrav za Bajram",
+    "bajram.quote": "\"Neka ovaj Bajram ispuni vaš dom mirom, srce ljubavlju, a sto slatkoćom.\"",
+    "bajram.body": "Iz naše kuhinje za vašu proslavu — naručite svečanu kutiju mini slatkiša i učinite praznik malo slađim.",
+    "bajram.cta": "Naruči Bajramsku kutiju",
+    "bajram.dismiss": "Možda kasnije",
   },
+
 };
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };
