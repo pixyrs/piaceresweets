@@ -222,7 +222,14 @@ const translations: Record<Lang, Dict> = {
     "form.submit": "Pošalji zahtev",
     "form.note": "Otvara vaš mejl program da pošalje zahtev na piaceresweets@hotmail.com",
     "sticky.order": "Naruči na Instagramu",
+    "bajram.kicker": "Bajram Mubarek",
+    "bajram.title": "Slatki pozdrav za Bajram",
+    "bajram.quote": "\"Neka ovaj Bajram ispuni vaš dom mirom, srce ljubavlju, a sto slatkoćom.\"",
+    "bajram.body": "Iz naše kuhinje za vašu proslavu — naručite svečanu kutiju mini slatkiša i učinite praznik malo slađim.",
+    "bajram.cta": "Naruči Bajramsku kutiju",
+    "bajram.dismiss": "Možda kasnije",
   },
+
 };
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };
