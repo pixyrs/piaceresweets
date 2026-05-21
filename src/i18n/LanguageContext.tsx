@@ -250,7 +250,7 @@ const LanguageContext = createContext<Ctx | null>(null);
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLangState] = useState<Lang>(() => {
     const saved = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-    return (saved as Lang) || "en";
+    return (saved as Lang) || "sr";
   });
   const setLang = (l: Lang) => {
     setLangState(l);
