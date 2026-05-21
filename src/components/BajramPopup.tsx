@@ -80,7 +80,7 @@ const BajramPopup = () => {
             {t("bajram.title")}
           </h2>
 
-          <div className="w-px h-10 bg-cocoa/20 mx-auto my-7" />
+          {/* divider removed */}
 
           <p className="font-display italic text-cocoa/75 text-lg md:text-xl leading-relaxed text-balance">
             {t("bajram.quote")}
