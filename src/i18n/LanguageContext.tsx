@@ -147,7 +147,14 @@ const translations: Record<Lang, Dict> = {
     "form.submit": "Dërgo kërkesën",
     "form.note": "Hap aplikacionin e emailit për të dërguar te piaceresweets@hotmail.com",
     "sticky.order": "Porosit në Instagram",
+    "bajram.kicker": "Bajrami Mubarek",
+    "bajram.title": "Një përshëndetje e ëmbël për Bajram",
+    "bajram.quote": "\"Bajrami i bekuar ju sjelltë paqe në shtëpi, dashuri në zemër dhe ëmbëlsi në tryezë.\"",
+    "bajram.body": "Nga kuzhina jonë për festën tuaj — porosit kutinë festive me ëmbëlsira mini dhe bëje festën pak më të ëmbël.",
+    "bajram.cta": "Porosit kutinë e Bajramit",
+    "bajram.dismiss": "Ndoshta më vonë",
   },
+
   sr: {
     "nav.menu": "Meni",
     "nav.story": "Priča",
