@@ -7,13 +7,18 @@ const STORAGE_KEY = "bajram-popup-2026-dismissed";
 const BajramPopup = () => {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
+  const [shown, setShown] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (localStorage.getItem(STORAGE_KEY) === "1") return;
-    const timer = setTimeout(() => setOpen(true), 900);
+    const timer = setTimeout(() => {
+      setOpen(true);
+      requestAnimationFrame(() => setShown(true));
+    }, 900);
     return () => clearTimeout(timer);
   }, []);
+
 
   const close = () => {
     setOpen(false);
