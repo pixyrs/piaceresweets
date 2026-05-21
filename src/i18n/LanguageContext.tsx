@@ -225,7 +225,7 @@ const translations: Record<Lang, Dict> = {
     "bajram.kicker": "Bajram Mubarek",
     "bajram.title": "Slatki pozdrav za Bajram",
     "bajram.quote": "\"Neka ovaj Bajram ispuni vaš dom mirom, srce ljubavlju, a sto slatkoćom.\"",
-    "bajram.body": "Iz naše kuhinje za vašu proslavu — naručite svečanu kutiju mini slatkiša i učinite praznik malo slađim.",
+    "bajram.body": "Iz naše kuhinje za vašu proslavu, naručite svečanu kutiju mini slatkiša i učinite praznik malo slađim.",
     "bajram.cta": "Naruči Bajramsku kutiju",
     "bajram.dismiss": "Možda kasnije",
   },
