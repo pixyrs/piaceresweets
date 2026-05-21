@@ -11,8 +11,7 @@ const BajramPopup = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    // Bypass localStorage for preview demo
-    // if (localStorage.getItem(STORAGE_KEY) === "1") return;
+    if (localStorage.getItem(STORAGE_KEY) === "1") return;
     const timer = setTimeout(() => {
       setOpen(true);
       requestAnimationFrame(() => setShown(true));
@@ -81,7 +80,7 @@ const BajramPopup = () => {
             {t("bajram.title")}
           </h2>
 
-          <div className="w-px h-10 bg-cocoa/20 mx-auto my-7" />
+          {/* divider removed */}
 
           <p className="font-display italic text-cocoa/75 text-lg md:text-xl leading-relaxed text-balance">
             {t("bajram.quote")}
