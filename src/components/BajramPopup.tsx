@@ -47,7 +47,7 @@ const BajramPopup = () => {
       />
 
       {/* card */}
-      <div className="relative w-full max-w-lg bg-cream shadow-elegant border border-cocoa/10 overflow-hidden animate-scale-in">
+      <div className={`relative w-full max-w-lg bg-cream shadow-elegant border border-cocoa/10 overflow-hidden transition-all duration-700 ease-out ${shown ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-4"}`}>
         {/* warm glow */}
         <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[28rem] h-[20rem] rounded-full bg-rose/30 blur-[100px]" />
         <div className="pointer-events-none absolute inset-0 bg-paper opacity-50" />
