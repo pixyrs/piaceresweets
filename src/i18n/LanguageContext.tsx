@@ -72,7 +72,14 @@ const translations: Record<Lang, Dict> = {
     "form.submit": "Send request",
     "form.note": "Opens your email app to send the request to piaceresweets@hotmail.com",
     "sticky.order": "Order on Instagram",
+    "bajram.kicker": "Eid Mubarak",
+    "bajram.title": "A sweet greeting for Bajram",
+    "bajram.quote": "\"May this Bajram fill your home with peace, your heart with love, and your table with sweetness.\"",
+    "bajram.body": "From our kitchen to your celebration — order your festive box of mini sweets and make the holiday a little sweeter.",
+    "bajram.cta": "Order your Bajram box",
+    "bajram.dismiss": "Maybe later",
   },
+
   sq: {
     "nav.menu": "Menyja",
     "nav.story": "Historia",
