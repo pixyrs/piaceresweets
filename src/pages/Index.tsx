@@ -5,6 +5,8 @@ import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
 import p3 from "@/assets/pastry-3.jpg";
 import p4 from "@/assets/pastry-4.jpg";
+import p5 from "@/assets/walnuts.jpeg";
+import p6 from "@/assets/coffee-beans.jpeg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
 import BajramPopup from "@/components/BajramPopup";
 
@@ -16,7 +18,10 @@ const Index = () => {
     { img: p2, name: t("menu.2.name"), desc: t("menu.2.desc") },
     { img: p3, name: t("menu.3.name"), desc: t("menu.3.desc") },
     { img: p4, name: t("menu.4.name"), desc: t("menu.4.desc") },
+    { img: p5, name: t("menu.5.name"), desc: t("menu.5.desc") },
+    { img: p6, name: t("menu.6.name"), desc: t("menu.6.desc") },
   ];
+
 
   // Parallax progress (-1 → 1) for the menu section orbs
   const menuRef = useRef<HTMLElement | null>(null);
