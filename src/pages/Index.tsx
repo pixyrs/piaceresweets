@@ -1,6 +1,6 @@
 import { ChevronDown, Instagram, Mail, MapPin } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import heroImg from "@/assets/hero-pastries.jpg";
+import heroImg from "@/assets/piacere-logo.jpeg";
 import p1 from "@/assets/pastry-1.jpg";
 import p2 from "@/assets/pastry-2.jpg";
 import p3 from "@/assets/pastry-3.jpg";
@@ -96,19 +96,19 @@ const Index = () => {
 
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-6 flex items-center justify-between">
-        <div className="font-display text-2xl tracking-wide text-cream">piacere</div>
-        <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.25em] text-cream/90">
-          <a href="#menu" className="hover:text-cream transition-colors">{t("nav.menu")}</a>
-          <a href="#story" className="hover:text-cream transition-colors">{t("nav.story")}</a>
-          <a href="#order" className="hover:text-cream transition-colors">{t("nav.order")}</a>
+        <div className="font-display text-2xl tracking-wide text-rose">piacere</div>
+        <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.25em] text-cocoa/80">
+          <a href="#menu" className="hover:text-rose transition-colors">{t("nav.menu")}</a>
+          <a href="#story" className="hover:text-rose transition-colors">{t("nav.story")}</a>
+          <a href="#order" className="hover:text-rose transition-colors">{t("nav.order")}</a>
         </nav>
         <div className="flex items-center gap-5">
-          <LanguageSwitcher className="text-cream/90" />
+          <LanguageSwitcher className="text-cocoa/80" />
           <a
             href="https://www.instagram.com/piaceresweets"
             target="_blank"
             rel="noreferrer"
-            className="text-cream hover:text-rose transition-colors"
+            className="text-cocoa hover:text-rose transition-colors"
             aria-label="Instagram"
           >
             <Instagram className="w-5 h-5" />
@@ -117,34 +117,28 @@ const Index = () => {
       </header>
 
       {/* HERO */}
-      <section className="relative h-[100vh] w-full">
+      <section className="relative min-h-[100vh] w-full flex flex-col items-center justify-center px-6 py-24" style={{ backgroundColor: "#fbe9ec" }}>
+        <p className="fade-in text-rose/80 text-xs uppercase tracking-[0.4em] mb-8 mt-12">
+          {t("hero.tag")}
+        </p>
         <img
           src={heroImg}
-          alt="Artisan mini pastries by Piacere"
-          width={1536}
-          height={1280}
-          className="absolute inset-0 w-full h-full object-cover"
+          alt="Piacere Sweets"
+          width={900}
+          height={900}
+          className="fade-in w-[80vw] max-w-[520px] h-auto object-contain"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-cocoa/40 via-cocoa/20 to-cocoa/70" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <p className="fade-in text-cream/80 text-xs uppercase tracking-[0.4em] mb-6">
-            {t("hero.tag")}
-          </p>
-          <h1 className="fade-up font-display text-cream text-6xl md:text-8xl lg:text-[9rem] leading-[0.95] text-balance max-w-5xl">
-            <span className="italic font-light">{t("hero.title1")}</span> {t("hero.title2")}<br/>
-            <span className="text-rose">{t("hero.title3")}</span>
-          </h1>
-          <p className="fade-in font-display italic text-cream/85 text-xl md:text-2xl mt-8 max-w-xl">
-            {t("hero.sub")}
-          </p>
-          <a
-            href="#order"
-            className="fade-up mt-12 inline-block px-10 py-4 bg-cream text-cocoa text-xs uppercase tracking-[0.3em] hover:bg-rose transition-all duration-500 shadow-elegant"
-          >
-            {t("hero.cta")}
-          </a>
-        </div>
+        <p className="fade-in font-display italic text-cocoa/75 text-xl md:text-2xl mt-6 max-w-xl text-center">
+          {t("hero.sub")}
+        </p>
+        <a
+          href="#order"
+          className="fade-up mt-10 inline-block px-10 py-4 bg-rose text-cream text-xs uppercase tracking-[0.3em] hover:bg-cocoa transition-all duration-500 shadow-elegant"
+        >
+          {t("hero.cta")}
+        </a>
       </section>
+
 
       {/* STORY */}
       <section id="story" className="py-28 md:py-40 px-6 md:px-12 bg-gradient-cream">
