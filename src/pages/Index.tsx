@@ -84,7 +84,7 @@ const Index = () => {
   const MIN_QTY = 10;
   const [form, setForm] = useState({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
   const [quantities, setQuantities] = useState<Record<string, number>>(
-    Object.fromEntries(menuIds.map((id) => [id, MIN_QTY])),
+    Object.fromEntries(menuIds.map((id) => [id, 0])),
   );
   const [submitting, setSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<{ kind: "success" | "error"; text: string } | null>(null);
@@ -140,7 +140,7 @@ const Index = () => {
       } else {
         setFeedback({ kind: "success", text: t("form.success") });
         setForm({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
-        setQuantities(Object.fromEntries(menuIds.map((id) => [id, MIN_QTY])));
+        setQuantities(Object.fromEntries(menuIds.map((id) => [id, 0])));
       }
     } catch {
       setFeedback({ kind: "error", text: t("form.errorGeneric") });
