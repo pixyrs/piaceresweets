@@ -140,7 +140,7 @@ const Index = () => {
       } else {
         setFeedback({ kind: "success", text: t("form.success") });
         setForm({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
-        setQuantities(Object.fromEntries(menuIds.map((id) => [id, 0])));
+        setQuantities(Object.fromEntries(menuIds.map((id) => [id, MIN_QTY])));
       }
     } catch {
       setFeedback({ kind: "error", text: t("form.errorGeneric") });
