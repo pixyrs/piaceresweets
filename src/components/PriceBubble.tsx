@@ -112,14 +112,10 @@ const PriceBubble = () => {
         />
 
         <span
-          className="relative font-display font-bold text-base uppercase tracking-wider leading-none text-center"
-          style={{
-            color: "hsl(var(--cream))",
-            textShadow: "0 2px 6px hsl(15 70% 8% / 0.45)",
-            fontSize: "clamp(14px, 3.5vw, 20px)",
-          }}
+          className="relative font-display italic text-[15px] lowercase tracking-tight"
+          style={{ color: "hsl(var(--cream))" }}
         >
-          {L.kicker}
+          {L.kicker.toLowerCase()}
         </span>
 
         {/* Tooltip */}
