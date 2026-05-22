@@ -80,15 +80,64 @@ const Index = () => {
   }));
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const [form, setForm] = useState({ name: "", email: "", occasion: "", date: "", message: "" });
-  const onSubmit = (e: FormEvent) => {
+  const menuIds = ["donuts", "truffle-roll", "crescents", "peaches", "walnuts", "coffee-beans"];
+  const [form, setForm] = useState({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
+  const [quantities, setQuantities] = useState<Record<string, number>>(
+    Object.fromEntries(menuIds.map((id) => [id, 0])),
+  );
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<{ kind: "success" | "error"; text: string } | null>(null);
+
+  const bump = (id: string, delta: number) =>
+    setQuantities((q) => ({ ...q, [id]: Math.max(0, Math.min(99, (q[id] || 0) + delta)) }));
+
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Order request — ${form.occasion || "Piacere"}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nOccasion: ${form.occasion}\nDate: ${form.date}\n\n${form.message}`,
-    );
-    window.location.href = `mailto:piaceresweets@hotmail.com?subject=${subject}&body=${body}`;
+    setFeedback(null);
+
+    const selected = menuIds
+      .map((id, i) => ({ id, name: items[i].name, quantity: quantities[id] || 0 }))
+      .filter((it) => it.quantity > 0);
+
+    if (selected.length === 0) {
+      setFeedback({ kind: "error", text: t("form.itemsEmpty") });
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { data, error } = await supabase.functions.invoke("submit-order", {
+        body: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          occasion: form.occasion,
+          pickup_date: form.date,
+          message: form.message,
+          items: selected,
+        },
+      });
+
+      if (error || (data && (data as { error?: string }).error)) {
+        const code = (data as { error?: string } | null)?.error;
+        if (code === "rate_limited") {
+          setFeedback({ kind: "error", text: t("form.errorRate") });
+        } else {
+          setFeedback({ kind: "error", text: t("form.errorGeneric") });
+        }
+      } else {
+        setFeedback({ kind: "success", text: t("form.success") });
+        setForm({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
+        setQuantities(Object.fromEntries(menuIds.map((id) => [id, 0])));
+      }
+    } catch {
+      setFeedback({ kind: "error", text: t("form.errorGeneric") });
+    } finally {
+      setSubmitting(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -361,6 +410,13 @@ const Index = () => {
               className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
             />
             <input
+              maxLength={40}
+              placeholder={t("form.phone")}
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
               maxLength={100}
               placeholder={t("form.occasion")}
               value={form.occasion}
@@ -371,10 +427,47 @@ const Index = () => {
               type="date"
               value={form.date}
               onChange={(e) => setForm({ ...form, date: e.target.value })}
-              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors"
+              className="md:col-span-2 bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors"
             />
+
+            {/* Items selector */}
+            <div className="md:col-span-2 pt-4">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-cocoa/60 mb-4">{t("form.itemsTitle")}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {menuIds.map((id, i) => {
+                  const qty = quantities[id] || 0;
+                  return (
+                    <div
+                      key={id}
+                      className={`flex items-center justify-between gap-3 p-3 border transition-colors ${qty > 0 ? "border-terracotta bg-rose/20" : "border-cocoa/15 bg-transparent"}`}
+                    >
+                      <span className="font-display text-lg text-cocoa leading-tight">{items[i].name}</span>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <button
+                          type="button"
+                          aria-label="decrease"
+                          onClick={() => bump(id, -1)}
+                          className="w-8 h-8 flex items-center justify-center border border-cocoa/30 text-cocoa hover:bg-cocoa hover:text-cream transition-colors"
+                        >
+                          −
+                        </button>
+                        <span className="w-7 text-center font-body text-cocoa tabular-nums">{qty}</span>
+                        <button
+                          type="button"
+                          aria-label="increase"
+                          onClick={() => bump(id, 1)}
+                          className="w-8 h-8 flex items-center justify-center border border-cocoa/30 text-cocoa hover:bg-cocoa hover:text-cream transition-colors"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             <textarea
-              required
               maxLength={1000}
               rows={4}
               placeholder={t("form.message")}
@@ -382,16 +475,27 @@ const Index = () => {
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="md:col-span-2 bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors resize-none"
             />
+
+            {feedback && (
+              <div
+                className={`md:col-span-2 p-4 text-sm font-body ${feedback.kind === "success" ? "bg-rose/30 text-cocoa border border-terracotta/40" : "bg-destructive/10 text-destructive border border-destructive/30"}`}
+              >
+                {feedback.text}
+              </div>
+            )}
+
             <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4">
               <p className="text-[11px] text-cocoa/50 font-body">{t("form.note")}</p>
               <button
                 type="submit"
-                className="px-10 py-4 bg-cocoa text-cream text-xs uppercase tracking-[0.3em] hover:bg-terracotta transition-colors duration-500"
+                disabled={submitting}
+                className="px-10 py-4 bg-cocoa text-cream text-xs uppercase tracking-[0.3em] hover:bg-terracotta transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {t("form.submit")}
+                {submitting ? t("form.sending") : t("form.submit")}
               </button>
             </div>
           </form>
+
         </div>
       </section>
 
