@@ -11,7 +11,6 @@ const BajramPopup = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (localStorage.getItem(STORAGE_KEY) === "1") return;
     const timer = setTimeout(() => {
       setOpen(true);
       requestAnimationFrame(() => setShown(true));
@@ -22,11 +21,6 @@ const BajramPopup = () => {
 
   const close = () => {
     setOpen(false);
-    try {
-      localStorage.setItem(STORAGE_KEY, "1");
-    } catch {
-      /* ignore */
-    }
   };
 
   if (!open) return null;
