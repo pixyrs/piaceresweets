@@ -1,4 +1,4 @@
-import { ChevronDown, Instagram, Mail, MapPin } from "lucide-react";
+import { ChevronDown, Globe, Instagram, Mail, MapPin } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
 import p1 from "@/assets/pastry-1.jpg";
@@ -161,7 +161,7 @@ const Index = () => {
         <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.25em] text-cream/90">
           <a href="#menu" className="hover:text-cream transition-colors">{t("nav.menu")}</a>
           <a href="#story" className="hover:text-cream transition-colors">{t("nav.story")}</a>
-          <a href="#order" className="hover:text-cream transition-colors">{t("nav.order")}</a>
+          <a href="#request" className="hover:text-cream transition-colors">{t("nav.order")}</a>
         </nav>
         <div className="flex items-center gap-5">
           <LanguageSwitcher className="text-cream/90" />
@@ -199,7 +199,7 @@ const Index = () => {
             {t("hero.sub")}
           </p>
           <a
-            href="#order"
+            href="#request"
             className="fade-up mt-12 inline-block px-10 py-4 bg-cream text-cocoa text-xs uppercase tracking-[0.3em] hover:bg-rose transition-all duration-500 shadow-elegant"
           >
             {t("hero.cta")}
@@ -382,6 +382,16 @@ const Index = () => {
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-cream/50">{t("order.email")}</p>
                 <p className="font-display text-2xl group-hover:text-rose transition-colors">piaceresweets@hotmail.com</p>
+              </div>
+            </a>
+            <a
+              href="#request"
+              className="flex items-center gap-5 p-6 border border-cream/20 hover:border-rose hover:bg-cream/5 transition-all group"
+            >
+              <Globe className="w-6 h-6 text-rose" />
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-cream/50">{t("order.site")}</p>
+                <p className="font-display text-2xl group-hover:text-rose transition-colors">piaceresweets.shop</p>
               </div>
             </a>
             <div className="flex items-center gap-5 p-6 border border-cream/20">
