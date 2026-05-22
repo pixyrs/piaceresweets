@@ -96,9 +96,8 @@ const PriceBubble = () => {
         onClick={() => setOpen((v) => !v)}
         aria-label={L.kicker}
         aria-expanded={open}
-        className="group relative flex items-center justify-center w-20 h-20 rounded-full cursor-pointer hover:scale-105 transition-transform duration-300 chocolate-bubble"
+        className="group relative flex items-center justify-center w-20 h-20 rounded-full cursor-pointer hover:scale-105 transition-transform duration-300 chocolate-bubble overflow-hidden"
         style={{
-          border: "3px solid hsl(var(--cream) / 0.85)",
           boxShadow:
             "0 14px 30px -8px hsl(20 60% 10% / 0.55), inset 0 -6px 12px hsl(15 70% 8% / 0.5), inset 0 4px 8px hsl(30 50% 60% / 0.25)",
           transform: `translateY(${drift}px) rotate(${rot}deg)`,
@@ -109,36 +108,14 @@ const PriceBubble = () => {
         <span
           aria-hidden
           className="pointer-events-none absolute top-2 left-3 w-7 h-3 rounded-full blur-[2px]"
-          style={{ background: "hsl(36 60% 90% / 0.35)" }}
-        />
-
-        {/* Melting chocolate drips */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-3 left-3 w-3 h-5 rounded-b-full chocolate-bubble"
-          style={{ boxShadow: "inset 0 -3px 6px hsl(15 70% 8% / 0.55)" }}
-        />
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-5 right-4 w-4 h-7 rounded-b-full chocolate-bubble"
-          style={{ boxShadow: "inset 0 -3px 6px hsl(15 70% 8% / 0.55)" }}
-        />
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 w-3 h-4 rounded-b-full chocolate-bubble"
-          style={{ boxShadow: "inset 0 -3px 6px hsl(15 70% 8% / 0.55)" }}
-        />
-        {/* Drip droplet */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-8 right-5 w-2.5 h-2.5 rounded-full chocolate-bubble"
+          style={{ background: "hsl(36 60% 90% / 0.3)" }}
         />
 
         <span
-          className="relative font-display text-[11px] uppercase font-semibold tracking-[0.18em]"
+          className="relative font-display italic text-[15px] lowercase tracking-tight"
           style={{ color: "hsl(var(--cream))" }}
         >
-          {L.kicker}
+          {L.kicker.toLowerCase()}
         </span>
 
         {/* Tooltip */}
@@ -149,6 +126,7 @@ const PriceBubble = () => {
           {L.tooltip}
         </div>
       </button>
+
 
     </div>
   );
