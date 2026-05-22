@@ -80,6 +80,8 @@ const translations: Record<Lang, Dict> = {
     "form.itemsTitle": "Choose pastries & quantity",
     "form.itemsEmpty": "Please add at least one pastry to your order.",
     "form.success": "Your sweet order is on its way to our kitchen! We'll reach out soon to confirm every little detail. 🍫",
+    "form.thankYouTitle": "Thank you!",
+    "form.newOrder": "Place another order",
     "form.errorGeneric": "Something went wrong. Please try again.",
     "form.errorRate": "Too many orders from your address today. Please try again tomorrow.",
 
@@ -167,6 +169,8 @@ const translations: Record<Lang, Dict> = {
     "form.itemsTitle": "Zgjidh ëmbëlsirat & sasinë",
     "form.itemsEmpty": "Të lutemi shto të paktën një ëmbëlsirë.",
     "form.success": "Porosia juaj e ëmbël po shkon drejt kuzhinës sonë! Do t'ju kontaktojmë së shpejti për çdo detaj të vogël. 🍫",
+    "form.thankYouTitle": "Faleminderit!",
+    "form.newOrder": "Bëj një porosi tjetër",
     "form.errorGeneric": "Diçka shkoi keq. Provo përsëri.",
     "form.errorRate": "Shumë porosi nga adresa juaj sot. Provoni nesër.",
 
@@ -254,6 +258,8 @@ const translations: Record<Lang, Dict> = {
     "form.itemsTitle": "Izaberite kolače i količinu",
     "form.itemsEmpty": "Molimo dodajte bar jedan kolač u porudžbinu.",
     "form.success": "Vaša slatka porudžbina je na putu ka našoj kuhinji! Javićemo se uskoro da potvrdimo svaki mali detalj. 🍫",
+    "form.thankYouTitle": "Hvala!",
+    "form.newOrder": "Naruči ponovo",
     "form.errorGeneric": "Nešto je pošlo po zlu. Pokušajte ponovo.",
     "form.errorRate": "Previše porudžbina sa vaše adrese danas. Pokušajte sutra.",
 
