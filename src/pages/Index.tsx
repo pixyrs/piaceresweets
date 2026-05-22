@@ -1,4 +1,4 @@
-import { ChevronDown, Instagram, Mail, MapPin } from "lucide-react";
+import { ChevronDown, Globe, Instagram, Mail, MapPin } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-pastries.jpg";
 import p1 from "@/assets/pastry-1.jpg";
