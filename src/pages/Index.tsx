@@ -80,15 +80,64 @@ const Index = () => {
   }));
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const [form, setForm] = useState({ name: "", email: "", occasion: "", date: "", message: "" });
-  const onSubmit = (e: FormEvent) => {
+  const menuIds = ["donuts", "truffle-roll", "crescents", "peaches", "walnuts", "coffee-beans"];
+  const [form, setForm] = useState({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
+  const [quantities, setQuantities] = useState<Record<string, number>>(
+    Object.fromEntries(menuIds.map((id) => [id, 0])),
+  );
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<{ kind: "success" | "error"; text: string } | null>(null);
+
+  const bump = (id: string, delta: number) =>
+    setQuantities((q) => ({ ...q, [id]: Math.max(0, Math.min(99, (q[id] || 0) + delta)) }));
+
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Order request — ${form.occasion || "Piacere"}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nOccasion: ${form.occasion}\nDate: ${form.date}\n\n${form.message}`,
-    );
-    window.location.href = `mailto:piaceresweets@hotmail.com?subject=${subject}&body=${body}`;
+    setFeedback(null);
+
+    const selected = menuIds
+      .map((id, i) => ({ id, name: items[i].name, quantity: quantities[id] || 0 }))
+      .filter((it) => it.quantity > 0);
+
+    if (selected.length === 0) {
+      setFeedback({ kind: "error", text: t("form.itemsEmpty") });
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { data, error } = await supabase.functions.invoke("submit-order", {
+        body: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          occasion: form.occasion,
+          pickup_date: form.date,
+          message: form.message,
+          items: selected,
+        },
+      });
+
+      if (error || (data && (data as { error?: string }).error)) {
+        const code = (data as { error?: string } | null)?.error;
+        if (code === "rate_limited") {
+          setFeedback({ kind: "error", text: t("form.errorRate") });
+        } else {
+          setFeedback({ kind: "error", text: t("form.errorGeneric") });
+        }
+      } else {
+        setFeedback({ kind: "success", text: t("form.success") });
+        setForm({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
+        setQuantities(Object.fromEntries(menuIds.map((id) => [id, 0])));
+      }
+    } catch {
+      setFeedback({ kind: "error", text: t("form.errorGeneric") });
+    } finally {
+      setSubmitting(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
