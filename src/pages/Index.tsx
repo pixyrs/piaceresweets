@@ -161,7 +161,7 @@ const Index = () => {
         <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.25em] text-cream/90">
           <a href="#menu" className="hover:text-cream transition-colors">{t("nav.menu")}</a>
           <a href="#story" className="hover:text-cream transition-colors">{t("nav.story")}</a>
-          <a href="#order" className="hover:text-cream transition-colors">{t("nav.order")}</a>
+          <a href="#request" className="hover:text-cream transition-colors">{t("nav.order")}</a>
         </nav>
         <div className="flex items-center gap-5">
           <LanguageSwitcher className="text-cream/90" />
@@ -199,7 +199,7 @@ const Index = () => {
             {t("hero.sub")}
           </p>
           <a
-            href="#order"
+            href="#request"
             className="fade-up mt-12 inline-block px-10 py-4 bg-cream text-cocoa text-xs uppercase tracking-[0.3em] hover:bg-rose transition-all duration-500 shadow-elegant"
           >
             {t("hero.cta")}
