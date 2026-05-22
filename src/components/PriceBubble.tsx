@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 
 const prices = [
@@ -12,9 +11,9 @@ const prices = [
 ];
 
 const labels = {
-  sr: { kicker: "Cenovnik", title: "Mini slatkiši", note: "Cena po komadu" },
-  sq: { kicker: "Çmimorja", title: "Ëmbëlsira mini", note: "Çmimi për copë" },
-  en: { kicker: "Price list", title: "Mini sweets", note: "Price per piece" },
+  sr: { kicker: "Cenovnik", title: "Naš Cenovnik", note: "Ručno rađeni deserti", tooltip: "Pogledajte cene" },
+  sq: { kicker: "Çmimorja", title: "Çmimorja Jonë", note: "Ëmbëlsira të punuara me dorë", tooltip: "Shikoni çmimet" },
+  en: { kicker: "Prices", title: "Our Price List", note: "Handcrafted desserts", tooltip: "View prices" },
 };
 
 const PriceBubble = () => {
@@ -35,100 +34,101 @@ const PriceBubble = () => {
     };
   }, []);
 
-  // gentle drift based on scroll position
   const drift = Math.sin(scrollY / 180) * 14;
-  const rot = Math.sin(scrollY / 260) * 6;
+  const rot = Math.sin(scrollY / 260) * 4;
 
   const L = labels[lang] ?? labels.en;
 
   return (
-    <>
-      {/* Floating bubble */}
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label={L.kicker}
-        className="fixed right-5 md:right-8 bottom-24 md:bottom-10 z-40 group"
-        style={{
-          transform: `translateY(${drift}px) rotate(${rot}deg)`,
-          transition: "transform 0.6s cubic-bezier(0.4,0,0.2,1)",
-        }}
-      >
-        <span className="pointer-events-none absolute inset-0 rounded-full blur-2xl opacity-60 bg-[radial-gradient(circle_at_30%_30%,hsl(20_55%_35%/0.7),transparent_70%)]" />
-        <span className="relative flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-full overflow-hidden shadow-elegant border border-cream/20 chocolate-bubble">
-          {/* glossy highlight */}
-          <span className="absolute top-2 left-3 h-5 w-7 rounded-full bg-cream/40 blur-[2px] rotate-[-20deg]" />
-          <span className="absolute -bottom-2 -right-2 h-10 w-10 rounded-full bg-cocoa/60 blur-md" />
-          {/* drip */}
-          <span className="absolute -bottom-1 left-1/3 h-3 w-2 rounded-b-full chocolate-bubble" />
-          <span className="relative font-display italic text-cream text-center leading-none">
-            <span className="block text-[9px] uppercase tracking-[0.3em] not-italic font-body text-cream/80 mb-0.5">
-              {L.kicker}
-            </span>
-            <span className="block text-xl md:text-2xl">€</span>
-          </span>
-        </span>
-      </button>
-
-      {/* Modal */}
+    <div className="fixed bottom-8 right-5 md:right-8 z-40 flex flex-col items-end gap-4">
+      {/* Price List Panel */}
       {open && (
         <div
           role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-[70] flex items-center justify-center px-5 py-8"
+          aria-modal="false"
+          className="w-[19rem] md:w-80 rounded-2xl shadow-2xl overflow-hidden border animate-in fade-in slide-in-from-bottom-4 duration-300"
+          style={{ background: "#fdf8f3", borderColor: "hsl(20 30% 20% / 0.1)" }}
         >
-          <button
-            type="button"
-            aria-label="Close"
-            onClick={() => setOpen(false)}
-            className="absolute inset-0 bg-cocoa/70 backdrop-blur-sm animate-in fade-in duration-300"
-          />
-          <div className="relative w-full max-w-md overflow-hidden border border-cream/10 shadow-elegant chocolate-card animate-in fade-in zoom-in-95 duration-500">
-            {/* glossy chocolate shimmer */}
-            <div className="pointer-events-none absolute -top-24 -left-20 h-64 w-64 rounded-full bg-[radial-gradient(circle,hsl(36_45%_75%/0.25),transparent_70%)]" />
-            <div className="pointer-events-none absolute -bottom-24 -right-20 h-64 w-64 rounded-full bg-[radial-gradient(circle,hsl(14_55%_40%/0.35),transparent_70%)]" />
+          {/* Header */}
+          <div className="p-5 text-center" style={{ background: "hsl(var(--cocoa))" }}>
+            <h3 className="font-display text-xl" style={{ color: "hsl(var(--cream))" }}>
+              {L.title}
+            </h3>
+            <div
+              className="w-12 h-0.5 mx-auto mt-2"
+              style={{ background: "hsl(var(--cream) / 0.3)" }}
+            />
+          </div>
 
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close"
-              className="absolute top-4 right-4 z-10 p-2 text-cream/70 hover:text-cream transition-colors"
+          {/* Items */}
+          <div className="p-6 space-y-3">
+            {prices.map((item, i) => (
+              <div
+                key={i}
+                className="flex justify-between items-center pb-2"
+                style={{ borderBottom: "1px solid hsl(20 30% 20% / 0.08)" }}
+              >
+                <span className="font-body text-sm font-medium" style={{ color: "hsl(var(--cocoa))" }}>
+                  {item.name[lang] ?? item.name.en}
+                </span>
+                <span className="font-body text-sm font-semibold" style={{ color: "hsl(var(--cocoa))" }}>
+                  {item.price}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <div className="p-3 text-center" style={{ background: "hsl(20 30% 20% / 0.05)" }}>
+            <span
+              className="text-[10px] uppercase tracking-widest font-semibold"
+              style={{ color: "hsl(20 30% 20% / 0.6)" }}
             >
-              <X className="w-4 h-4" />
-            </button>
-
-            <div className="relative px-8 md:px-10 py-10 md:py-12 text-center text-cream">
-              <p className="text-[10px] uppercase tracking-[0.45em] text-gold mb-4">{L.kicker}</p>
-              <h2 className="font-display text-4xl md:text-5xl leading-tight text-balance">
-                {L.title}
-              </h2>
-              <div className="mx-auto mt-5 h-px w-16 bg-gold/50" />
-
-              <ul className="mt-8 space-y-3.5 text-left">
-                {prices.map((item, i) => (
-                  <li key={i} className="flex items-baseline gap-3">
-                    <span className="font-display text-lg md:text-xl text-cream whitespace-nowrap">
-                      {item.name[lang] ?? item.name.en}
-                    </span>
-                    <span
-                      className="flex-1 mt-2 border-b border-dotted border-cream/30"
-                      aria-hidden
-                    />
-                    <span className="font-display text-lg md:text-xl text-gold whitespace-nowrap">
-                      {item.price}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mt-8 text-[10px] uppercase tracking-[0.35em] text-cream/60">
-                {L.note}
-              </p>
-            </div>
+              {L.note}
+            </span>
           </div>
         </div>
       )}
-    </>
+
+      {/* Floating Bubble */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-label={L.kicker}
+        aria-expanded={open}
+        className="group relative flex items-center justify-center w-16 h-16 rounded-full shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
+        style={{
+          background: "hsl(var(--cocoa))",
+          border: "4px solid hsl(var(--cream))",
+          boxShadow: "0 10px 30px -10px hsl(20 30% 20% / 0.5), 0 0 0 4px hsl(20 30% 20% / 0.08)",
+          transform: `translateY(${drift}px) rotate(${rot}deg)`,
+          transition: "transform 0.6s cubic-bezier(0.4,0,0.2,1), scale 0.3s",
+        }}
+      >
+        <div className="flex flex-col items-center justify-center leading-none">
+          <span
+            className="text-xl font-bold leading-none"
+            style={{ color: "hsl(var(--cream))" }}
+          >
+            €
+          </span>
+          <span
+            className="text-[9px] uppercase font-bold tracking-tighter mt-0.5"
+            style={{ color: "hsl(var(--cream))" }}
+          >
+            {L.kicker}
+          </span>
+        </div>
+
+        {/* Tooltip */}
+        <div
+          className="absolute right-full mr-3 px-3 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+          style={{ background: "hsl(var(--cocoa))", color: "hsl(var(--cream))" }}
+        >
+          {L.tooltip}
+        </div>
+      </button>
+    </div>
   );
 };
 
