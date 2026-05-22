@@ -488,10 +488,30 @@ const Index = () => {
             />
 
             {feedback && (
-              <div
-                className={`md:col-span-2 p-4 text-sm font-body ${feedback.kind === "success" ? "bg-rose/30 text-cocoa border border-terracotta/40" : "bg-destructive/10 text-destructive border border-destructive/30"}`}
-              >
-                {feedback.text}
+              <div className="md:col-span-2">
+                {feedback.kind === "success" ? (
+                  <div className="relative overflow-hidden bg-cocoa text-cream p-8 md:p-10 text-center border border-cream/20 shadow-elegant">
+                    <div className="absolute inset-1 border border-cream/10 pointer-events-none" />
+                    <div className="relative z-10 space-y-4">
+                      <div className="font-display text-4xl md:text-5xl leading-none">🍫</div>
+                      <h3 className="font-display text-2xl md:text-3xl leading-tight">{t("form.thankYouTitle")}</h3>
+                      <p className="font-body text-cream/80 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+                        {feedback.text}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setFeedback(null)}
+                        className="mt-4 inline-block px-8 py-3 bg-cream text-cocoa text-xs uppercase tracking-[0.3em] hover:bg-rose transition-colors duration-500"
+                      >
+                        {t("form.newOrder")}
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-4 text-sm font-body bg-destructive/10 text-destructive border border-destructive/30">
+                    {feedback.text}
+                  </div>
+                )}
               </div>
             )}
 
