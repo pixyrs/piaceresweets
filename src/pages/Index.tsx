@@ -444,12 +444,19 @@ const Index = () => {
               onChange={(e) => setForm({ ...form, occasion: e.target.value })}
               className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
             />
-            <input
-              type="date"
-              value={form.date}
-              onChange={(e) => setForm({ ...form, date: e.target.value })}
-              className="md:col-span-2 bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors"
-            />
+            <div className="md:col-span-2">
+              <label className="block text-[10px] uppercase tracking-[0.3em] text-cocoa/60 mb-1">
+                {t("form.date")}
+              </label>
+              <input
+                type="date"
+                required
+                min={new Date().toISOString().split("T")[0]}
+                value={form.date}
+                onChange={(e) => setForm({ ...form, date: e.target.value })}
+                className="w-full bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors [color-scheme:light]"
+              />
+            </div>
 
             {/* Items selector */}
             <div className="md:col-span-2 pt-4">
