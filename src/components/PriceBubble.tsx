@@ -7,7 +7,7 @@ const prices = [
   { name: { sr: "Oraščići", sq: "Guacka arrash", en: "Walnut Shells" }, price: "€0.40" },
   { name: { sr: "Tartuf rolat", sq: "Rul me tartufë", en: "Truffle Roll" }, price: "€0.60" },
   { name: { sr: "Polumeseci", sq: "Gjysmëhëna", en: "Crescents" }, price: "€0.60" },
-  { name: { sr: "Kafena zrna", sq: "Kokrra kafeje", en: "Coffee Beans" }, price: "€0.40" },
+  { name: { sr: "Zrna kafe", sq: "Kokrra kafeje", en: "Coffee Beans" }, price: "€0.40" },
 ];
 
 const labels = {
