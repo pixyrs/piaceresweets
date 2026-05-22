@@ -9,6 +9,7 @@ import p5 from "@/assets/walnuts.jpeg";
 import p6 from "@/assets/coffee-beans.jpeg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
 import BajramPopup from "@/components/BajramPopup";
+import PriceBubble from "@/components/PriceBubble";
 
 
 const Index = () => {
@@ -450,6 +451,7 @@ const Index = () => {
         <Instagram className="w-4 h-4 text-rose" />
         {t("sticky.order")}
       </a>
+      <PriceBubble />
     </div>
   );
 };
