@@ -79,7 +79,7 @@ const translations: Record<Lang, Dict> = {
     "form.note": "Your order is delivered straight to the Piacere atelier.",
     "form.itemsTitle": "Choose pastries & quantity",
     "form.itemsEmpty": "Please add at least one pastry to your order.",
-    "form.success": "Order received! We'll get back to you soon. 🤎",
+    "form.success": "Your sweet order is on its way to our kitchen! We'll reach out soon to confirm every little detail. 🍫",
     "form.errorGeneric": "Something went wrong. Please try again.",
     "form.errorRate": "Too many orders from your address today. Please try again tomorrow.",
 
@@ -166,7 +166,7 @@ const translations: Record<Lang, Dict> = {
     "form.note": "Porosia jote shkon drejtpërdrejt te atelieja Piacere.",
     "form.itemsTitle": "Zgjidh ëmbëlsirat & sasinë",
     "form.itemsEmpty": "Të lutemi shto të paktën një ëmbëlsirë.",
-    "form.success": "Porosia u pranua! Do të kthehemi së shpejti. 🤎",
+    "form.success": "Porosia juaj e ëmbël po shkon drejt kuzhinës sonë! Do t'ju kontaktojmë së shpejti për çdo detaj të vogël. 🍫",
     "form.errorGeneric": "Diçka shkoi keq. Provo përsëri.",
     "form.errorRate": "Shumë porosi nga adresa juaj sot. Provoni nesër.",
 
@@ -253,7 +253,7 @@ const translations: Record<Lang, Dict> = {
     "form.note": "Vaša porudžbina stiže direktno u Piacere atelje.",
     "form.itemsTitle": "Izaberite kolače i količinu",
     "form.itemsEmpty": "Molimo dodajte bar jedan kolač u porudžbinu.",
-    "form.success": "Porudžbina je primljena! Javljamo se uskoro. 🤎",
+    "form.success": "Vaša slatka porudžbina je na putu ka našoj kuhinji! Javićemo se uskoro da potvrdimo svaki mali detalj. 🍫",
     "form.errorGeneric": "Nešto je pošlo po zlu. Pokušajte ponovo.",
     "form.errorRate": "Previše porudžbina sa vaše adrese danas. Pokušajte sutra.",
 
