@@ -410,6 +410,13 @@ const Index = () => {
               className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
             />
             <input
+              maxLength={40}
+              placeholder={t("form.phone")}
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors"
+            />
+            <input
               maxLength={100}
               placeholder={t("form.occasion")}
               value={form.occasion}
@@ -420,10 +427,47 @@ const Index = () => {
               type="date"
               value={form.date}
               onChange={(e) => setForm({ ...form, date: e.target.value })}
-              className="bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors"
+              className="md:col-span-2 bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa transition-colors"
             />
+
+            {/* Items selector */}
+            <div className="md:col-span-2 pt-4">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-cocoa/60 mb-4">{t("form.itemsTitle")}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {menuIds.map((id, i) => {
+                  const qty = quantities[id] || 0;
+                  return (
+                    <div
+                      key={id}
+                      className={`flex items-center justify-between gap-3 p-3 border transition-colors ${qty > 0 ? "border-terracotta bg-rose/20" : "border-cocoa/15 bg-transparent"}`}
+                    >
+                      <span className="font-display text-lg text-cocoa leading-tight">{items[i].name}</span>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <button
+                          type="button"
+                          aria-label="decrease"
+                          onClick={() => bump(id, -1)}
+                          className="w-8 h-8 flex items-center justify-center border border-cocoa/30 text-cocoa hover:bg-cocoa hover:text-cream transition-colors"
+                        >
+                          −
+                        </button>
+                        <span className="w-7 text-center font-body text-cocoa tabular-nums">{qty}</span>
+                        <button
+                          type="button"
+                          aria-label="increase"
+                          onClick={() => bump(id, 1)}
+                          className="w-8 h-8 flex items-center justify-center border border-cocoa/30 text-cocoa hover:bg-cocoa hover:text-cream transition-colors"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             <textarea
-              required
               maxLength={1000}
               rows={4}
               placeholder={t("form.message")}
@@ -431,16 +475,27 @@ const Index = () => {
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="md:col-span-2 bg-transparent border-b border-cocoa/20 focus:border-terracotta outline-none px-1 py-3 font-body text-cocoa placeholder:text-cocoa/40 transition-colors resize-none"
             />
+
+            {feedback && (
+              <div
+                className={`md:col-span-2 p-4 text-sm font-body ${feedback.kind === "success" ? "bg-rose/30 text-cocoa border border-terracotta/40" : "bg-destructive/10 text-destructive border border-destructive/30"}`}
+              >
+                {feedback.text}
+              </div>
+            )}
+
             <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4">
               <p className="text-[11px] text-cocoa/50 font-body">{t("form.note")}</p>
               <button
                 type="submit"
-                className="px-10 py-4 bg-cocoa text-cream text-xs uppercase tracking-[0.3em] hover:bg-terracotta transition-colors duration-500"
+                disabled={submitting}
+                className="px-10 py-4 bg-cocoa text-cream text-xs uppercase tracking-[0.3em] hover:bg-terracotta transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {t("form.submit")}
+                {submitting ? t("form.sending") : t("form.submit")}
               </button>
             </div>
           </form>
+
         </div>
       </section>
 
