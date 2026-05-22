@@ -81,15 +81,26 @@ const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const menuIds = ["donuts", "truffle-roll", "crescents", "peaches", "walnuts", "coffee-beans"];
+  const MIN_QTY = 10;
   const [form, setForm] = useState({ name: "", email: "", phone: "", occasion: "", date: "", message: "" });
   const [quantities, setQuantities] = useState<Record<string, number>>(
-    Object.fromEntries(menuIds.map((id) => [id, 0])),
+    Object.fromEntries(menuIds.map((id) => [id, MIN_QTY])),
   );
   const [submitting, setSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<{ kind: "success" | "error"; text: string } | null>(null);
 
   const bump = (id: string, delta: number) =>
-    setQuantities((q) => ({ ...q, [id]: Math.max(0, Math.min(99, (q[id] || 0) + delta)) }));
+    setQuantities((q) => {
+      const current = q[id] || 0;
+      let next: number;
+      if (delta > 0) {
+        next = current === 0 ? MIN_QTY : Math.min(999, current + 1);
+      } else {
+        next = current <= MIN_QTY ? 0 : current - 1;
+      }
+      return { ...q, [id]: next };
+    });
+
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
