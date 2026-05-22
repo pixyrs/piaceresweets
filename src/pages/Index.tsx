@@ -384,6 +384,16 @@ const Index = () => {
                 <p className="font-display text-2xl group-hover:text-rose transition-colors">piaceresweets@hotmail.com</p>
               </div>
             </a>
+            <a
+              href="#request"
+              className="flex items-center gap-5 p-6 border border-cream/20 hover:border-rose hover:bg-cream/5 transition-all group"
+            >
+              <Globe className="w-6 h-6 text-rose" />
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-cream/50">{t("order.site")}</p>
+                <p className="font-display text-2xl group-hover:text-rose transition-colors">piaceresweets.shop</p>
+              </div>
+            </a>
             <div className="flex items-center gap-5 p-6 border border-cream/20">
               <MapPin className="w-6 h-6 text-rose" />
               <div>
