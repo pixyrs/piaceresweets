@@ -146,7 +146,7 @@
 
 /* Candy mascot animations */
 @layer utilities {
-  .mascot-run { animation: mascotRun 3.2s cubic-bezier(0.3, 0, 0.4, 1) both; transform-origin: 50% 100%; }
+  .mascot-run { animation: mascotRun 4s cubic-bezier(0.5, 0, 0.5, 1) both; transform-origin: 50% 100%; }
   .mascot-arrive { animation: mascotArrive 0.5s ease-out both; }
   .mascot-bob { animation: mascotBob 0.28s ease-in-out infinite; }
   .mascot-sway { animation: mascotSway 1.6s ease-in-out infinite; transform-origin: 50% 100%; }
