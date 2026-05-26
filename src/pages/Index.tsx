@@ -406,7 +406,7 @@ const Index = () => {
       </section>
 
       {/* ORDER FORM */}
-      <section id="request" className="py-28 md:py-36 px-6 md:px-12 bg-gradient-warm">
+      <section id="request" className="py-28 md:py-36 pb-40 md:pb-36 px-6 md:px-12 bg-gradient-warm">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 reveal">
             <p className="text-xs uppercase tracking-[0.4em] text-terracotta mb-4">{t("form.kicker")}</p>
