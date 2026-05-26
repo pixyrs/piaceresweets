@@ -105,16 +105,15 @@ const CandyMascot = () => {
               <circle cx="22" cy="96" r="3.5" fill="hsl(14 65% 70%)" stroke="hsl(20 30% 20%)" strokeWidth="1.5" />
             </g>
 
-            {/* Right arm: swings while running, waves/points when arrived */}
+            {/* Right arm: swings while running, points UP at the CTA when arrived */}
             <g
-              className={phase === "running" ? "arm-swing-r" : "arm-wave"}
+              className={phase === "running" ? "arm-swing-r" : "arm-point"}
               style={{ transformOrigin: "88px 78px" }}
             >
-              <line x1="88" y1="78" x2="100" y2={phase === "arrived" ? "48" : "96"} stroke="hsl(20 30% 20%)" strokeWidth="3" strokeLinecap="round" />
-              <circle cx="100" cy={phase === "arrived" ? 48 : 96} r="4" fill="hsl(14 65% 70%)" stroke="hsl(20 30% 20%)" strokeWidth="1.5" />
+              <line x1="88" y1="78" x2={phase === "arrived" ? "78" : "100"} y2={phase === "arrived" ? "36" : "96"} stroke="hsl(20 30% 20%)" strokeWidth="3" strokeLinecap="round" />
+              <circle cx={phase === "arrived" ? 78 : 100} cy={phase === "arrived" ? 36 : 96} r="4" fill="hsl(14 65% 70%)" stroke="hsl(20 30% 20%)" strokeWidth="1.5" />
               {phase === "arrived" && (
-                /* pointing finger */
-                <line x1="100" y1="48" x2="100" y2="40" stroke="hsl(20 30% 20%)" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="78" y1="36" x2="78" y2="24" stroke="hsl(20 30% 20%)" strokeWidth="2.5" strokeLinecap="round" />
               )}
             </g>
           </svg>
