@@ -8,7 +8,7 @@ import p4 from "@/assets/pastry-4.jpg";
 import p5 from "@/assets/walnuts.jpeg";
 import p6 from "@/assets/coffee-beans.jpeg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
-import BajramPopup from "@/components/BajramPopup";
+
 import PriceBubble from "@/components/PriceBubble";
 import CandyMascot from "@/components/CandyMascot";
 
