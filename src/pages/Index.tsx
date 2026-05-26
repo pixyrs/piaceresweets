@@ -10,6 +10,7 @@ import p6 from "@/assets/coffee-beans.jpeg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
 import BajramPopup from "@/components/BajramPopup";
 import PriceBubble from "@/components/PriceBubble";
+import CandyMascot from "@/components/CandyMascot";
 
 
 const Index = () => {
@@ -205,6 +206,7 @@ const Index = () => {
             {t("hero.cta")}
           </a>
         </div>
+        <CandyMascot />
       </section>
 
       {/* STORY */}
