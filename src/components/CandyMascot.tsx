@@ -19,7 +19,7 @@ const CandyMascot = () => {
       arriveTimer = setTimeout(() => setPhase("arrived"), RUN_MS);
       loopTimer = setTimeout(cycle, RUN_MS + STAY_MS);
     };
-    const startTimer = setTimeout(cycle, 600);
+    const startTimer = setTimeout(cycle, 150);
     return () => {
       clearTimeout(startTimer);
       clearTimeout(arriveTimer);
