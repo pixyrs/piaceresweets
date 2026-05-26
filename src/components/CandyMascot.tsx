@@ -38,15 +38,6 @@ const CandyMascot = () => {
         className={`relative ${phase === "running" ? "mascot-run" : "mascot-arrive"}`}
         style={{ width: 110, height: 130 }}
       >
-        {/* Speech bubble (only when arrived) */}
-        {phase === "arrived" && (
-          <div className="mascot-bubble absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
-            <div className="relative bg-cream text-cocoa text-[10px] uppercase tracking-[0.25em] px-3 py-2 shadow-elegant border border-cocoa/10">
-              {t("hero.cta")} ↓
-              <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45 bg-cream border-r border-b border-cocoa/10" />
-            </div>
-          </div>
-        )}
 
         {/* Body that bobs while running, sways when arrived */}
         <div className={phase === "running" ? "mascot-bob" : "mascot-sway"}>
