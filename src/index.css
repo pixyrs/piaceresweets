@@ -160,9 +160,10 @@
 }
 
 @keyframes mascotRun {
-  0%   { transform: translateX(-110vw) scale(0.35); }
-  70%  { transform: translateX(0) scale(0.9); }
-  100% { transform: translateX(0) scale(1); }
+  0%   { transform: translateY(-38vh) scale(0.08); opacity: 0; }
+  15%  { opacity: 1; }
+  60%  { transform: translateY(-10vh) scale(0.45); }
+  100% { transform: translateY(0) scale(1); }
 }
 @keyframes mascotArrive {
   from { transform: scale(1); }
@@ -192,6 +193,11 @@
 @keyframes armWave {
   0%, 100% { transform: rotate(-15deg); }
   50%      { transform: rotate(15deg); }
+}
+.arm-point { animation: armPoint 0.7s ease-in-out infinite; }
+@keyframes armPoint {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-4px) rotate(-6deg); }
 }
 @keyframes wrapFlutterL {
   0%, 100% { transform: rotate(-6deg); }
