@@ -146,7 +146,7 @@
 
 /* Candy mascot animations */
 @layer utilities {
-  .mascot-run { animation: mascotRun 3.2s cubic-bezier(0.3, 0, 0.4, 1) both; transform-origin: 50% 100%; }
+  .mascot-run { animation: mascotRun 4s cubic-bezier(0.5, 0, 0.5, 1) both; transform-origin: 50% 100%; }
   .mascot-arrive { animation: mascotArrive 0.5s ease-out both; }
   .mascot-bob { animation: mascotBob 0.28s ease-in-out infinite; }
   .mascot-sway { animation: mascotSway 1.6s ease-in-out infinite; transform-origin: 50% 100%; }
@@ -160,9 +160,10 @@
 }
 
 @keyframes mascotRun {
-  0%   { transform: translate(-48vw, 8px) scale(0.1); opacity: 0; filter: blur(2px); }
-  12%  { opacity: 1; filter: blur(0); }
-  55%  { transform: translate(-18vw, 4px) scale(0.4); }
+  0%   { transform: translate(-90vw, 20px) scale(0.06); opacity: 0; filter: blur(3px); }
+  10%  { opacity: 1; filter: blur(1px); }
+  40%  { transform: translate(-55vw, 12px) scale(0.22); filter: blur(0); }
+  75%  { transform: translate(-25vw, 6px) scale(0.55); }
   100% { transform: translate(0, 0) scale(1); }
 }
 @keyframes mascotArrive {

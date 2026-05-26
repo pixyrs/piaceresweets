@@ -10,11 +10,20 @@ const CandyMascot = () => {
   const [phase, setPhase] = useState<"hidden" | "running" | "arrived">("hidden");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("running"), 600);
-    const t2 = setTimeout(() => setPhase("arrived"), 600 + 2600);
+    let arriveTimer: ReturnType<typeof setTimeout>;
+    let loopTimer: ReturnType<typeof setTimeout>;
+    const RUN_MS = 4000;
+    const STAY_MS = 6000;
+    const cycle = () => {
+      setPhase("running");
+      arriveTimer = setTimeout(() => setPhase("arrived"), RUN_MS);
+      loopTimer = setTimeout(cycle, RUN_MS + STAY_MS);
+    };
+    const startTimer = setTimeout(cycle, 600);
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
+      clearTimeout(startTimer);
+      clearTimeout(arriveTimer);
+      clearTimeout(loopTimer);
     };
   }, []);
 
