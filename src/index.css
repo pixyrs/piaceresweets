@@ -194,6 +194,11 @@
   0%, 100% { transform: rotate(-15deg); }
   50%      { transform: rotate(15deg); }
 }
+.arm-point { animation: armPoint 0.7s ease-in-out infinite; }
+@keyframes armPoint {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-4px) rotate(-6deg); }
+}
 @keyframes wrapFlutterL {
   0%, 100% { transform: rotate(-6deg); }
   50%      { transform: rotate(6deg); }
