@@ -32,8 +32,9 @@ const CandyMascot = () => {
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none absolute left-0 right-0 bottom-[6%] md:bottom-[10%] z-20 flex justify-center`}
+      className={`pointer-events-none absolute left-0 right-0 bottom-[6%] md:left-auto md:right-[6%] md:bottom-[8%] z-20 flex justify-center md:justify-end`}
     >
+
       <div
         className={`relative ${phase === "running" ? "mascot-run" : "mascot-arrive"}`}
         style={{ width: 110, height: 130 }}
