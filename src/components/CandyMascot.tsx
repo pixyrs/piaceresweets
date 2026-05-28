@@ -30,6 +30,8 @@ const CandyMascot = () => {
   if (phase === "hidden") return null;
 
   return (
+    <div
+      aria-hidden="true"
       className={`pointer-events-none absolute left-0 right-0 bottom-[6%] z-20 flex justify-center`}
     >
 
