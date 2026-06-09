@@ -10,7 +10,7 @@ import p6 from "@/assets/coffee-beans.jpeg";
 import { LanguageSwitcher, useLang } from "@/i18n/LanguageContext";
 
 import PriceBubble from "@/components/PriceBubble";
-import CandyMascot from "@/components/CandyMascot";
+
 
 
 const Index = () => {
