@@ -206,7 +206,6 @@ const Index = () => {
             {t("hero.cta")}
           </a>
         </div>
-        <CandyMascot />
       </section>
 
       {/* STORY */}
